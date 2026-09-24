@@ -12,13 +12,28 @@ output/segments.json           5〜8 秒の区間（小節頭で分割）＋振�
 output/choreography_plan.md    振付プラン（カウント表）
 output/video_prompts.md        動画生成 AI 用プロンプト一覧（一覧表＋コピペ用）
         │
-        ▼  python run_all.py generate --execute   （API キーがある場合）
+        ▼  python run_all.py generate                （既定: local = 無料・ローカル生成）
+        ▼  python run_all.py generate --provider kling --execute   （API キーがある場合）
 output/clips/dance_01.mp4 … dance_09.mp4
         │
         ▼  python run_all.py assemble
 output/final_tiktok_dance.mp4  1080x1920 / 30fps / H.264 + AAC / 元音源で同期
 （クリップ未生成の区間があると output/preview_animatic.mp4 = 絵コンテ入りのタイミング確認動画を作成）
 ```
+
+## 無料のローカル生成（既定）
+
+`--provider local`（config.json の既定）は外部 API を使わず、この PC 上だけでクリップを作ります。
+
+1. 基準画像から人物の骨格（MediaPipe）と切り抜きを自動推定し、胴体・頭・左右の腕のレイヤーに分解
+2. 人物を消した背景プレートを自動生成
+3. 振付テンプレートを拍に同期したキーフレームに変換（膝の曲げ伸ばし・重心移動・上体の傾き・肩ヒット・
+   首・腕の引き寄せ・体の向き）し、メッシュ変形 + 脚の IK で動かす
+4. 強拍のズーム、サビ頭のフラッシュ、ドロップのカメラ揺れ、ブレイクのモノクロ静止、LED の明滅を拍に同期
+
+4 コア CPU で 9 区間 ≈ 2.5 分、結合 ≈ 1.5 分。1 枚の画像を変形させる方式のため、動きの幅は AI 動画生成より小さめです
+（腕を大きく回す・ターン・足を大きく踏み替える動きは再現しません）。より本格的な動きが必要になったら、
+同じプロンプトで API 生成に切り替えてください（`--provider kling --execute` など、既存クリップは `--force` で作り直し）。
 
 ## セットアップ
 
@@ -31,13 +46,14 @@ pip install -r requirements.txt     # ffmpeg は imageio-ffmpeg 同梱のもの�
 | コマンド | 内容 |
 |---|---|
 | `python run_all.py plan` | 素材検出 → 音源解析 → 区間分割 → 振付設計 → プロンプト/一覧表の出力 |
-| `python run_all.py generate` | **ドライラン**（送信内容を `output/requests/` に保存。課金なし） |
-| `python run_all.py generate --execute` | API に実送信して `output/clips/dance_XX.mp4` を保存（既存クリップはスキップ） |
+| `python run_all.py generate` | 無料のローカル生成（`provider=local`）で `output/clips/dance_XX.mp4` を作成 |
+| `python run_all.py generate --provider kling` | API 用の**ドライラン**（送信内容を `output/requests/` に保存。課金なし） |
+| `python run_all.py generate --provider kling --execute` | API に実送信して `output/clips/dance_XX.mp4` を保存（既存クリップはスキップ） |
 | `python run_all.py generate --execute --only 4,5` | 指定区間だけ生成 |
 | `python run_all.py generate --execute --retry-failed` | 失敗記録 (`output/failed_segments.json`) の区間だけ再生成 |
 | `python run_all.py generate --execute --only 4 --force` | 気に入らない区間を作り直し（旧クリップは `clips/_old/` に退避） |
 | `python run_all.py assemble` | 結合して最終 MP4 を作成 |
-| `python run_all.py all --execute` | 全部まとめて |
+| `python run_all.py all` | 全部まとめて（無料ローカル生成 → 結合） |
 
 `--provider kling|runway|minimax|luma|fal` でサービスを切り替え（既定は `config.json`）。
 

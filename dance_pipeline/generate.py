@@ -69,6 +69,11 @@ def run_generation(root: Path, plan: dict, cfg: dict, provider: str | None = Non
     gcfg = cfg["generation"]
     execute = execute or bool(gcfg.get("execute"))
     pname = provider or gcfg["provider"]
+    if pname == "local":
+        # 無料・ローカル完結の 2D パペット生成（API キー不要・課金なし）
+        from .puppet.render import render_segments
+
+        return render_segments(root, plan, cfg, only=only, force=force)
     pcfg = gcfg["providers"][pname]
     prov = get_provider(pname, pcfg)
     od = root / cfg.get("output_dir", "output")

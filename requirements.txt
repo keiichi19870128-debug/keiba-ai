@@ -5,3 +5,5 @@ soundfile
 imageio-ffmpeg   # ffmpeg バイナリ同梱（システムに ffmpeg があればそちらを優先）
 pillow
 requests
+opencv-python-headless
+mediapipe==0.10.14   # 骨格推定・人物切り抜き（ローカル生成用）

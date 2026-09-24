@@ -130,7 +130,7 @@ def main():
     ap.add_argument("command", choices=["plan", "generate", "assemble", "all"])
     ap.add_argument("--audio")
     ap.add_argument("--image")
-    ap.add_argument("--provider", help="kling / runway / minimax / luma / fal（既定は config.json）")
+    ap.add_argument("--provider", help="local（無料・ローカル生成）/ kling / runway / minimax / luma / fal（既定は config.json）")
     ap.add_argument("--execute", action="store_true", help="実際に API に送信する（課金が発生しうる）。無指定はドライラン")
     ap.add_argument("--only", help="生成する区間番号をカンマ区切りで指定 例: 4,5")
     ap.add_argument("--retry-failed", action="store_true", help="failed_segments.json に記録された区間だけ再生成")

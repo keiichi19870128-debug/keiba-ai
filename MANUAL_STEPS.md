@@ -1,8 +1,11 @@
 # 人間が行う必要がある最小限の操作
 
-解析・区間分割・振付・プロンプト・生成スクリプト・結合スクリプトはすべて完成済みです。
-残っているのは **「動画生成サービスで 9 本のクリップを作る」** 部分だけで、これはログイン/API キー/課金判断が
-必要なため自動化を止めています（勝手な登録・課金はしていません）。
+**無料版の完成動画 `output/final_tiktok_dance.mp4` は作成済みです（人の操作は不要）。**
+基準画像を 2D パペットとして動かすローカル生成なので、外部サービス・課金は一切使っていません。
+TikTok への投稿（最下部）だけが人の操作です。
+
+以下は「AI 動画生成サービスで、より大きく本格的に踊る版を作りたい」場合の追加手順です。
+ログイン/API キー/課金判断が必要なため自動では実行していません（勝手な登録・課金はしていません）。
 
 > この作業環境（クラウド）には API キーが無く、さらにネットワークポリシーで
 > `api-singapore.klingai.com` / `api.dev.runwayml.com` などへの通信が遮断されていました。
@@ -33,12 +36,12 @@
    ```
 3. 実行（ここで初めて課金が発生します）
    ```bash
-   python run_all.py generate                       # まずドライラン：送信内容と生成尺を確認（無料）
-   python run_all.py generate --execute              # 9 区間を順番に生成 → output/clips/dance_01.mp4 …
+   python run_all.py generate --provider kling                   # まずドライラン：送信内容と生成尺を確認（無料）
+   python run_all.py generate --provider kling --execute --force # 9 区間を順番に生成（ローカル版クリップは clips/_old/ へ退避）
    python run_all.py assemble                        # → output/final_tiktok_dance.mp4
    ```
    サービスを変える場合は `--provider runway` など。失敗した区間があれば
-   `python run_all.py generate --execute --retry-failed` を実行してから `assemble`。
+   `python run_all.py generate --provider kling --execute --retry-failed` を実行してから `assemble`。
 
 消費の目安（Kling 既定設定）：10 秒クリップ×1（dance_01）＋ 5 秒クリップ×8 = 合計 50 秒ぶん。
 コストを下げたい場合は `config.json` の `providers.kling.mode` を `"std"` に変更してください。
@@ -60,6 +63,7 @@ Kling / Hailuo / Runway / Pika / Luma の Web 版は、無料プランやログ�
    - ネガティブプロンプト欄があれば「共通ネガティブプロンプト」を貼り付け
 3. 設定: 縦長 9:16、長さは `dance_01` のみ 10 秒、他は 5 秒（または 6 秒）、カメラ固定
 4. 生成された動画をダウンロードし、**`output/clips/dance_01.mp4` … `dance_09.mp4`** の名前で保存
+   （ローカル版のクリップは先に別フォルダへ移しておく。1 本だけ差し替えても OK）
 
 9 本そろったら（そろっていなくても途中確認可）:
 
@@ -76,7 +80,7 @@ python run_all.py assemble
 ## 仕上がりチェック（1 分）
 
 - `final_tiktok_dance.mp4` を再生し、崩れ（手指の破綻、顔の変化、フレームアウト）がある区間だけ作り直す
-  - API: `python run_all.py generate --execute --only 6 --force`（旧クリップは `output/clips/_old/` に退避）
+  - API: `python run_all.py generate --provider kling --execute --only 6 --force`（旧クリップは `output/clips/_old/` に退避）
   - Web: 同じプロンプトで再生成して `dance_06.mp4` を置き換え
 - `python run_all.py assemble` をもう一度実行
 
