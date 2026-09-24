@@ -1,0 +1,7 @@
+{
+  "_説明": "この曲だけの設定（書いた項目だけ config.json の lyrics_video を上書き）",
+  "emphasis": {"color": "#FF4D6D"},
+  "chorus": {"scale": 1.22},
+  "background": {"brightness": 0.85, "image_motion": "zoom_in", "image_zoom": 1.06, "text_scrim": 0.32},
+  "subtitle": {"position_y": 0.6}
+}

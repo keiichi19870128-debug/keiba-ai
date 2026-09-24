@@ -30,7 +30,8 @@ sys.path.insert(0, str(ROOT))
 from lyrics_video import lyrics as ly  # noqa: E402
 from lyrics_video import timing as tm  # noqa: E402
 from lyrics_video.audio import analyze  # noqa: E402
-from lyrics_video.common import StepError, backup_existing, ffmpeg_exe, load_config, log, setup_logging  # noqa: E402
+from lyrics_video.common import (StepError, backup_existing, deep_merge, ffmpeg_exe, load_config, log,  # noqa: E402
+                                 setup_logging)
 from lyrics_video.detect import detect_inputs  # noqa: E402
 from lyrics_video.render import check_font, prepare_background, render_final, resolve_font, verify_output  # noqa: E402
 from lyrics_video.subtitles import layout_params, write_subs  # noqa: E402
@@ -83,6 +84,16 @@ def make_one(cfg: dict, input_dir: Path, out_dir: Path, args) -> list[Path]:
     work = out_dir / "_work"
     work.mkdir(parents=True, exist_ok=True)
     ffmpeg_exe()  # 最初に ffmpeg を確認（無ければここで分かりやすいエラー）
+
+    # 曲フォルダに config.json があれば、その曲だけ設定を上書き（書いた項目だけ変わる）
+    song_cfg = input_dir / "config.json"
+    if song_cfg.exists() and song_cfg.resolve() != (ROOT / "config.json").resolve():
+        try:
+            raw = json.loads(song_cfg.read_text(encoding="utf-8-sig"))
+        except json.JSONDecodeError as exc:
+            raise StepError(f"{song_cfg} の書式エラー: {exc}") from exc
+        cfg = deep_merge(cfg, raw.get("lyrics_video", raw))
+        log.info("[設定] 曲フォルダの設定を適用: %s", song_cfg)
 
     overrides = dict(cfg["files"])
     for k in ("audio", "lyrics", "background"):

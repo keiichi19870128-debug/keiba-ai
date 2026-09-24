@@ -188,12 +188,16 @@ def align_words_to_lines(lines: list[LyricLine], words: list[tuple[float, float,
     """単語時刻付きの文字起こしと歌詞を文字単位で突き合わせ、歌詞 1 文字ごとの時刻を求める."""
     tr_chars: list[str] = []
     tr_times: list[tuple[float, float]] = []
+    # 認識結果全体をまとめて読みに直す（1 文字ずつだと「離」→「り」のように文脈に合わない読みになる）
+    src_text, src_times = "", []
     for s, e, w in words:
-        rc = [c for c, _ in reading_chars(w)]
-        n = len(rc)
-        for k, c in enumerate(rc):
-            tr_chars.append(c)
-            tr_times.append((s + (e - s) * k / n, s + (e - s) * (k + 1) / n))
+        n = max(len(w), 1)
+        for k in range(len(w)):
+            src_times.append((s + (e - s) * k / n, s + (e - s) * (k + 1) / n))
+        src_text += w
+    for c, pos in reading_chars(src_text):
+        tr_chars.append(c)
+        tr_times.append(src_times[min(pos, len(src_times) - 1)])
 
     ly_chars: list[str] = []
     ly_owner: list[tuple[int, int]] = []  # (行番号, 行内の文字位置)

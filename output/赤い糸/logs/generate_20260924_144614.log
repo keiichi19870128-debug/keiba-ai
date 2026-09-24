@@ -1,0 +1,66 @@
+2026-09-24 14:46:14,272 [DEBUG] config = {"input_dir": "input", "output_dir": "output", "output_name": "final_tiktok.mp4", "keep_history": true, "files": {"audio": null, "lyrics": null, "background": null}, "video": {"width": 1080, "height": 1920, "fps": 30, "crf": 18, "preset": "slow", "audio_bitrate": "320k", "audio_sample_rate": "source", "fade_in_sec": 0.4, "fade_out_sec": 1.2}, "background": {"brightness": 0.78, "saturation": 1.0, "contrast": 1.0, "blur": 0, "vignette": true, "text_scrim": 0.28, "fit": "cover", "video_start_sec": 0.0, "loop_crossfade_sec": 1.0, "image_motion": "auto", "image_zoom": 1.15, "image_crossfade_sec": 1.2, "motion_seed": 0}, "font": {"file": "auto", "name": "auto", "size": 92, "bold": true}, "subtitle": {"position_y": 0.6, "margin_x": 90, "safe_top": 0.14, "safe_bottom": 0.24, "max_lines": 2, "max_chars_per_line": 0, "phrase_max_chars": 12, "line_spacing": 0.18, "letter_spacing": 1, "primary_color": "#FFFFFF", "outline_color": "#000000", "outline": 6, "outline_blur": 1.5, "shadow": 3, "shadow_color": "#000000", "shadow_alpha": 0.55, "animation": "slide_up", "fade_in_ms": 180, "fade_out_ms": 160, "lead_in_sec": 0.12, "hold_sec": 0.45, "min_duration": 0.8, "max_duration": 6.0, "gap_sec": 0.06, "beat_snap": true, "beat_snap_tolerance": 0.16}, "chorus": {"enabled": true, "detect": "auto", "scale": 1.15, "animation": "pop", "color": null}, "emphasis": {"enabled": true, "auto": true, "words": [], "scale": 1.28, "color": "#FFE45C", "max_auto_words": 6, "max_per_phrase": 1}, "timing": {"method": "auto", "whisper_model": "small", "language": "ja", "device": "auto", "compute_type": "auto", "vocal_separation": "auto", "use_lyrics_prompt": true, "min_match_ratio": 0.2, "offset_sec": 0.0, "models_dir": "models"}, "variants": 1}
+2026-09-24 14:46:14,273 [DEBUG] python = 3.11.15 (main, Mar  3 2026, 09:26:23) [GCC 13.3.0] / platform = linux
+2026-09-24 14:46:14,286 [INFO] [設定] 曲フォルダの設定を適用: /home/user/keiba-ai/songs/赤い糸/config.json
+2026-09-24 14:46:14,287 [INFO] [検出] 音源   : /home/user/keiba-ai/songs/赤い糸/song.mp3
+2026-09-24 14:46:14,287 [INFO] [検出] 歌詞   : /home/user/keiba-ai/songs/赤い糸/lyrics.txt
+2026-09-24 14:46:14,287 [INFO] [検出] 背景   : /home/user/keiba-ai/songs/赤い糸/background.png
+2026-09-24 14:46:14,295 [DEBUG] [ffmpeg:音源のデコード(22050Hz)] cwd=None
+  /usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2 -hide_banner -nostdin -y -loglevel warning -nostats -i /home/user/keiba-ai/songs/赤い糸/song.mp3 -vn -ar 22050 -c:a pcm_s16le /home/user/keiba-ai/output/赤い糸/_work/analysis_stereo.wav
+2026-09-24 14:46:14,412 [DEBUG] [ffmpeg:音源のデコード(22050Hz)] exit=0 0.1s
+
+2026-09-24 14:46:22,140 [INFO] [解析] 長さ 36.80s / BPM≈99.4 / 拍 61 / 音の鳴り始め 0.19s・終わり 36.27s
+2026-09-24 14:46:22,175 [INFO] [フォント] Noto Sans JP Black (/home/user/keiba-ai/fonts/NotoSansJP-Black.otf)
+2026-09-24 14:46:22,175 [INFO] [歌詞] 12 行 / 5 ブロック
+2026-09-24 14:46:22,176 [INFO] [タイミング] stable-ts 未インストールのため強制アラインメントはスキップ
+2026-09-24 14:46:22,201 [INFO] [タイミング] Spleeter (sherpa-onnx) でボーカルを分離中 ...
+2026-09-24 14:46:22,202 [DEBUG] [ffmpeg:音源のデコード(44100Hz)] cwd=None
+  /usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2 -hide_banner -nostdin -y -loglevel warning -nostats -i /home/user/keiba-ai/songs/赤い糸/song.mp3 -vn -ar 44100 -c:a pcm_s16le /home/user/keiba-ai/output/赤い糸/_work/sep_in.wav
+2026-09-24 14:46:22,348 [DEBUG] [ffmpeg:音源のデコード(44100Hz)] exit=0 0.1s
+
+2026-09-24 14:46:27,683 [DEBUG] [ffmpeg:音源のデコード(16000Hz)] cwd=None
+  /usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2 -hide_banner -nostdin -y -loglevel warning -nostats -i /home/user/keiba-ai/output/赤い糸/_work/vocals.wav -vn -ar 16000 -ac 1 -c:a pcm_s16le /home/user/keiba-ai/output/赤い糸/_work/whisper_16k.wav
+2026-09-24 14:46:27,774 [DEBUG] [ffmpeg:音源のデコード(16000Hz)] exit=0 0.1s
+[aist#0:0/pcm_s16le @ 0x1975b980] Guessed Channel Layout: stereo
+
+2026-09-24 14:46:27,774 [INFO] [タイミング] ReazonSpeech (sherpa-onnx) で歌声を認識中 ...
+2026-09-24 14:46:31,292 [DEBUG] [sherpa] 0.0-11.8s: 小指と小指そっとつないで一歩離れてまた気づいて
+2026-09-24 14:46:32,052 [DEBUG] [sherpa] 11.8-28.7s: 向いて左向いて目が合ったならこっちにおいで手を伸ばしてギュッと引き寄せ離さない
+2026-09-24 14:46:32,436 [DEBUG] [sherpa] 28.7-36.8s: あっ
+2026-09-24 14:46:32,454 [DEBUG] [sherpa] 無音部分の誤認識を除外: 28.70s あ
+2026-09-24 14:46:32,454 [DEBUG] [sherpa] 無音部分の誤認識を除外: 36.58s っ
+2026-09-24 14:46:32,560 [DEBUG] [タイミング] 単語 62 個: 小 指 と 小 指 そ っ と つ な い で 一 歩 離 れ て ま た 気 づ い て 向 い て 左 向 い て 目 が 合 っ た な ら こ っ ち に お い で 手 を 伸 ば し て ギ ュ ッ と 引 き 寄 せ 離 さ な い
+2026-09-24 14:46:33,507 [INFO] [タイミング] sherpa: 歌詞との一致率 72%
+2026-09-24 14:46:33,508 [INFO] [字幕] 12 フレーズ（1 行あたり最大 全角 10 文字 / 最大 2 行）
+2026-09-24 14:46:33,508 [DEBUG]     1.92-  4.07   小指と小指
+2026-09-24 14:46:33,508 [DEBUG]     4.13-  6.79   そっとつないで
+2026-09-24 14:46:33,508 [DEBUG]     6.85-  8.88   一歩離れて
+2026-09-24 14:46:33,509 [DEBUG]     8.94- 11.27   また近づいて
+2026-09-24 14:46:33,509 [DEBUG]    11.33- 12.78   右向いて
+2026-09-24 14:46:33,509 [DEBUG]    12.84- 13.99   左向いて
+2026-09-24 14:46:33,509 [DEBUG]    14.05- 15.17   目が合ったなら
+2026-09-24 14:46:33,509 [DEBUG]    15.23- 16.68   こっちにおいで
+2026-09-24 14:46:33,509 [DEBUG]    16.74- 18.47 ★ 手を伸ばして
+2026-09-24 14:46:33,509 [DEBUG]    18.53- 20.58 ★ ぎゅっと / 引き寄せ
+2026-09-24 14:46:33,509 [DEBUG]    20.64- 22.99 ★ 離さないで
+2026-09-24 14:46:33,509 [DEBUG]    23.05- 24.81 ★ 赤い糸
+2026-09-24 14:46:33,510 [DEBUG] 既存ファイルを退避: /home/user/keiba-ai/output/赤い糸/lyrics.ass -> /home/user/keiba-ai/output/赤い糸/_history/20260924-144614/lyrics.ass
+2026-09-24 14:46:33,510 [DEBUG] 既存ファイルを退避: /home/user/keiba-ai/output/赤い糸/lyrics.srt -> /home/user/keiba-ai/output/赤い糸/_history/20260924-144614/lyrics.srt
+2026-09-24 14:46:33,510 [DEBUG] 既存ファイルを退避: /home/user/keiba-ai/output/赤い糸/lyrics.lrc -> /home/user/keiba-ai/output/赤い糸/_history/20260924-144614/lyrics.lrc
+2026-09-24 14:46:33,510 [DEBUG] 既存ファイルを退避: /home/user/keiba-ai/output/赤い糸/lyrics_timing.json -> /home/user/keiba-ai/output/赤い糸/_history/20260924-144614/lyrics_timing.json
+2026-09-24 14:46:33,512 [INFO] [字幕] lyrics.ass / lyrics.srt / lyrics.lrc を書き出しました（タイミング: sherpa）
+2026-09-24 14:46:33,614 [DEBUG] fontselect: {('Noto Sans JP Black', 'NotoSansJP-Black')}
+2026-09-24 14:46:33,615 [INFO] ---- 動画 1/1: final_tiktok.mp4 ----
+2026-09-24 14:46:33,665 [INFO] [背景] 画像 background.png: zoom_in（36.8s）
+2026-09-24 14:46:33,665 [DEBUG] [ffmpeg:背景(画像の Ken Burns)] cwd=None
+  /usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2 -hide_banner -nostdin -y -loglevel warning -nostats -progress pipe:1 -i /home/user/keiba-ai/songs/赤い糸/background.png -filter_complex [0:v]format=rgb24,scale=3240:5760:force_original_aspect_ratio=increase:flags=lanczos,crop=3240:5760,setsar=1,zoompan=z='1+0.0600*((1-cos(PI*min(on,1103)/1103))/2)':x='(iw-iw/zoom)/2':y='(ih-ih/zoom)/2':d=1104:s=1080x1920:fps=30,trim=end_frame=1104,setpts=PTS-STARTPTS,fps=30,format=yuv420p[p0] -map [p0] -t 36.800 -r 30 -c:v libx264 -preset veryfast -crf 14 -pix_fmt yuv420p -an /home/user/keiba-ai/output/赤い糸/_work/bg_image_v0.mp4
+2026-09-24 14:47:27,746 [DEBUG] [ffmpeg:背景(画像の Ken Burns)] exit=0 54.1s
+
+2026-09-24 14:47:27,746 [DEBUG] 既存ファイルを退避: /home/user/keiba-ai/output/赤い糸/final_tiktok.mp4 -> /home/user/keiba-ai/output/赤い糸/_history/20260924-144614/final_tiktok.mp4
+2026-09-24 14:47:27,827 [INFO] [書き出し] エンコード中 ...（CRF 18 / slow）
+2026-09-24 14:47:27,828 [DEBUG] [ffmpeg:最終エンコード] cwd=/home/user/keiba-ai/output/赤い糸/_work
+  /usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2 -hide_banner -nostdin -y -loglevel warning -nostats -progress pipe:1 -i /home/user/keiba-ai/output/赤い糸/_work/bg_image_v0.mp4 -i /home/user/keiba-ai/songs/赤い糸/song.mp3 -loop 1 -framerate 30 -i /home/user/keiba-ai/output/赤い糸/_work/scrim.png -filter_complex [0:v]null,fps=30,format=yuv420p,colorlevels=romax=0.850:gomax=0.850:bomax=0.850,vignette=angle=PI/5[bg];[2:v]format=rgba[sc];[bg][sc]overlay=0:0:shortest=1:format=auto[bs];[bs]ass=render.ass:fontsdir=fonts,fade=t=in:st=0:d=0.40,fade=t=out:st=35.600:d=1.20,scale=out_color_matrix=bt709:out_range=tv,format=yuv420p[v] -map [v] -map 1:a:0 -t 36.800 -c:v libx264 -preset slow -crf 18 -profile:v high -level:v 4.2 -pix_fmt yuv420p -r 30 -g 60 -bf 2 -color_primaries bt709 -color_trc bt709 -colorspace bt709 -c:a aac -b:a 320k -movflags +faststart -tag:v avc1 /home/user/keiba-ai/output/赤い糸/_work/render_tmp.mp4
+2026-09-24 14:48:49,328 [DEBUG] [ffmpeg:最終エンコード] exit=0 81.5s
+
+2026-09-24 14:48:49,349 [INFO] [確認] final_tiktok.mp4: 1080x1920 / 36.80s / 30.0 fps / 18.3 MB
+2026-09-24 14:48:49,349 [INFO] 完了 (155 秒): /home/user/keiba-ai/output/赤い糸/final_tiktok.mp4
+2026-09-24 14:48:49,349 [INFO] ログ: /home/user/keiba-ai/output/赤い糸/logs/generate_20260924_144614.log

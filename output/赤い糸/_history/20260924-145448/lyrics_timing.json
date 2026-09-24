@@ -1,0 +1,152 @@
+{
+  "method": "sherpa",
+  "audio": "/home/user/keiba-ai/songs/赤い糸/song.mp3",
+  "lyrics": "/home/user/keiba-ai/songs/赤い糸/lyrics.txt",
+  "phrases": [
+    {
+      "start": 2.229,
+      "end": 4.073,
+      "rows": [
+        "小指と小指"
+      ],
+      "chorus": false,
+      "sung": [
+        2.2,
+        4.2
+      ]
+    },
+    {
+      "start": 4.133,
+      "end": 6.79,
+      "rows": [
+        "そっとつないで"
+      ],
+      "chorus": false,
+      "sung": [
+        4.2,
+        6.36
+      ]
+    },
+    {
+      "start": 6.85,
+      "end": 8.88,
+      "rows": [
+        "一歩離れて"
+      ],
+      "chorus": false,
+      "sung": [
+        7.04,
+        9.0
+      ]
+    },
+    {
+      "start": 8.94,
+      "end": 11.271,
+      "rows": [
+        "また近づいて"
+      ],
+      "chorus": false,
+      "sung": [
+        9.0,
+        11.51
+      ]
+    },
+    {
+      "start": 11.331,
+      "end": 12.781,
+      "rows": [
+        "右向いて"
+      ],
+      "chorus": false,
+      "sung": [
+        11.39,
+        13.01
+      ]
+    },
+    {
+      "start": 12.841,
+      "end": 13.988,
+      "rows": [
+        "左向いて"
+      ],
+      "chorus": false,
+      "sung": [
+        13.01,
+        14.21
+      ]
+    },
+    {
+      "start": 14.048,
+      "end": 15.172,
+      "rows": [
+        "目が合ったなら"
+      ],
+      "chorus": false,
+      "sung": [
+        14.21,
+        15.41
+      ]
+    },
+    {
+      "start": 15.232,
+      "end": 16.682,
+      "rows": [
+        "こっちにおいで"
+      ],
+      "chorus": false,
+      "sung": [
+        15.41,
+        17.01
+      ]
+    },
+    {
+      "start": 16.742,
+      "end": 18.47,
+      "rows": [
+        "手を伸ばして"
+      ],
+      "chorus": true,
+      "sung": [
+        17.01,
+        18.65
+      ]
+    },
+    {
+      "start": 18.53,
+      "end": 21.14,
+      "rows": [
+        "ぎゅっと",
+        "引き寄せ"
+      ],
+      "chorus": true,
+      "sung": [
+        18.65,
+        20.69
+      ]
+    },
+    {
+      "start": 21.838,
+      "end": 22.986,
+      "rows": [
+        "離さないで"
+      ],
+      "chorus": true,
+      "sung": [
+        21.85,
+        23.26
+      ]
+    },
+    {
+      "start": 23.046,
+      "end": 24.81,
+      "rows": [
+        "赤い糸"
+      ],
+      "chorus": true,
+      "sung": [
+        23.26,
+        24.36
+      ]
+    }
+  ]
+}

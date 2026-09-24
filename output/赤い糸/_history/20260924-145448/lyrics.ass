@@ -1,0 +1,29 @@
+﻿[Script Info]
+; generate_tiktok.py が自動生成。手で直した場合は python generate_tiktok.py --ass output/lyrics.ass で再描画できます
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+YCbCr Matrix: TV.709
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Lyric,Noto Sans JP Black,92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H8C000000,-1,0,0,0,100,100,1,0,1,6,3,5,0,0,0,1
+Style: Chorus,Noto Sans JP Black,112,&H00FFFFFF,&H00FFFFFF,&H00000000,&H8C000000,-1,0,0,0,100,100,1,0,1,6.6,3,5,0,0,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:02.23,0:00:04.07,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}{\fs97\1c&H006D4DFF\t(180,340,\fs118)}小指{\fs92\1c&H00FFFFFF}と小指
+Dialogue: 1,0:00:04.13,0:00:06.79,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}{\fs97\1c&H006D4DFF\t(180,340,\fs118)}そっと{\fs92\1c&H00FFFFFF}つないで
+Dialogue: 1,0:00:06.85,0:00:08.88,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}一歩離れて
+Dialogue: 1,0:00:08.94,0:00:11.27,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}また{\fs97\1c&H006D4DFF\t(180,340,\fs118)}近づいて{\fs92\1c&H00FFFFFF}
+Dialogue: 1,0:00:11.33,0:00:12.78,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}{\fs97\1c&H006D4DFF\t(180,340,\fs118)}右{\fs92\1c&H00FFFFFF}向いて
+Dialogue: 1,0:00:12.84,0:00:13.99,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}{\fs97\1c&H006D4DFF\t(180,340,\fs118)}左{\fs92\1c&H00FFFFFF}向いて
+Dialogue: 1,0:00:14.05,0:00:15.17,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}{\fs97\1c&H006D4DFF\t(180,340,\fs118)}目が合った{\fs92\1c&H00FFFFFF}なら
+Dialogue: 1,0:00:15.23,0:00:16.68,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}こっちにおいで
+Dialogue: 1,0:00:16.74,0:00:18.47,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs112}手を伸ばして
+Dialogue: 1,0:00:18.53,0:00:21.14,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1079)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs112}{\fs118\1c&H006D4DFF\t(180,340,\fs144)}ぎゅっと{\fs112\1c&H00FFFFFF}
+Dialogue: 2,0:00:18.53,0:00:21.14,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1243)\fade(255,0,255,90,270,2450,2610)\fscx72\fscy72\t(90,270,\fscx107\fscy107)\t(270,380,\fscx100\fscy100)\fs112}引き寄せ
+Dialogue: 1,0:00:21.84,0:00:22.99,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs112}離さないで
+Dialogue: 1,0:00:23.05,0:00:24.81,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs112}赤い糸

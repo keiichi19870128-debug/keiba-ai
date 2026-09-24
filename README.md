@@ -135,6 +135,12 @@ python generate_tiktok.py
 `config.json` はダンス動画パイプライン（下記）と共用で、歌詞動画の設定は `"lyrics_video"` の中にあります。
 書かなかった項目は既定値が使われます。
 
+**曲ごとの設定**: 素材フォルダ（例 `songs/赤い糸/`）に `config.json` を置くと、その曲だけ書いた項目が上書きされます。
+
+```json
+{ "emphasis": {"color": "#FF4D6D"}, "background": {"image_motion": "zoom_in", "image_zoom": 1.06} }
+```
+
 | 項目 | 既定値 | 内容 |
 |---|---|---|
 | **文字サイズ** `font.size` | `92` | 1080px 幅での文字の大きさ（px）。解像度を変えても比率は自動で合わせます |

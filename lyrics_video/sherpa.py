@@ -125,4 +125,38 @@ def recognize_words(wav16: Path, models_dir: Path) -> list[tuple[float, float, s
             nxt = ts[i + 1] if i + 1 < len(ts) else t + 0.35
             words.append((t, min(nxt, t + 0.8), tok))
         log.debug("[sherpa] %.1f-%.1fs: %s", a / sr, b / sr, r.text)
-    return words
+    return _drop_silent(words, x, sr)
+
+
+def _drop_silent(words: list[tuple[float, float, str]], x: np.ndarray, sr: int) -> list[tuple[float, float, str]]:
+    """歌声が無い所に付いた文字を直す.
+
+    - 直後（3 秒以内）に歌声のある文字が続く → 時刻がずれているだけなので、その直前に移す
+      （先頭の文字が 0 秒になる癖など）
+    - それ以外 → 無音部分のノイズを誤認識したものとして捨てる
+    """
+    hop = int(0.05 * sr)
+    n = len(x) // hop
+    if n == 0:
+        return words
+    rms = np.sqrt(np.mean(x[: n * hop].reshape(n, hop) ** 2, axis=1) + 1e-12)
+    thr = 0.06 * np.percentile(rms, 95)
+
+    def voiced(t: float) -> bool:
+        i0, i1 = max(0, int((t - 0.1) / 0.05)), min(n, int((t + 0.4) / 0.05) + 1)
+        return i1 > i0 and float(rms[i0:i1].mean()) >= thr
+
+    flags = [voiced(w[0]) for w in words]
+    out: list[tuple[float, float, str]] = []
+    for i, w in enumerate(words):
+        if flags[i]:
+            out.append(w)
+            continue
+        nxt = next((j for j in range(i + 1, len(words)) if flags[j]), None)
+        if nxt is not None and words[nxt][0] - w[0] < 3.0:
+            t = words[nxt][0] - 0.2 * (nxt - i)
+            out.append((t, t + 0.2, w[2]))
+            log.debug("[sherpa] 時刻を補正: %s %.2fs → %.2fs", w[2], w[0], t)
+        else:
+            log.debug("[sherpa] 無音部分の誤認識を除外: %.2fs %s", w[0], w[2])
+    return out
