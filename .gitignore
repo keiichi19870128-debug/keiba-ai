@@ -6,3 +6,5 @@ output/_history/
 output/clips/_old/
 output/_work/
 models/
+output/logs/
+output/*_preview.mp4

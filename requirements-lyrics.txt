@@ -1,0 +1,16 @@
+# generate_tiktok.py（歌詞付き縦動画）に必要なライブラリ
+#   pip install -r requirements-lyrics.txt
+numpy
+scipy
+librosa>=0.10
+soundfile
+imageio-ffmpeg      # libass 入りの ffmpeg を同梱（別途 ffmpeg のインストールは不要）
+pillow
+pykakasi            # 歌詞とボーカルの突き合わせで漢字→ひらがな変換に使用（精度向上）
+
+# ---- 歌詞タイミングを自動で合わせる（強く推奨・無料・ローカル実行）----
+faster-whisper      # Whisper 文字起こし（初回にモデルを自動ダウンロード。以後オフラインで動作）
+
+# ---- さらに精度を上げたい場合（任意・PyTorch が入るので容量が大きい）----
+# stable-ts         # 歌詞テキストとボーカルの強制アラインメント（timing.method = "align"）
+# demucs            # ボーカル分離（伴奏を消してから解析するので大幅に精度が上がる）

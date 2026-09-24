@@ -1,4 +1,207 @@
-# TikTok AI ダンス動画 自動制作パイプライン
+# TikTok 歌詞付き縦動画 自動生成（generate_tiktok.py）
+
+Suno などで作った曲を、**音源・歌詞・背景を入れ替えて 1 コマンド実行するだけ**で
+TikTok にそのまま投稿できる歌詞付き縦動画にします。有料 API は使いません（すべてローカル・無料）。
+
+```
+input/
+  song.mp3          ← 音源（mp3 / wav / m4a / flac）
+  lyrics.txt        ← 歌詞（txt。タイム付きの .lrc でも可）
+  background.mp4    ← 背景（mp4 / mov または jpg / png）
+
+python generate_tiktok.py
+
+output/
+  final_tiktok.mp4      ← 完成動画（1080x1920 / 9:16 / 30fps / H.264 + AAC 320kbps / faststart）
+  lyrics.ass            ← 動画に焼き込んだ字幕（アニメーション・強調入り）
+  lyrics.srt            ← 汎用字幕（他の編集ソフト用）
+  lyrics.lrc            ← 推定した歌詞タイミング（直して input に置けば次回その時刻で作成）
+  lyrics_timing.json    ← フレーズごとの表示時刻（確認用）
+  logs/generate_*.log   ← 実行ログ（エラーの原因調査用。ffmpeg のコマンドと出力も全部入り）
+```
+
+## 1. セットアップ（Windows・初回だけ）
+
+1. **Python 3.10 以上** を入れる: https://www.python.org/downloads/ （インストール時に「Add python.exe to PATH」にチェック）
+2. このフォルダでコマンドプロンプト（または PowerShell）を開き、ライブラリを入れる:
+
+   ```bat
+   python -m pip install -U pip
+   pip install -r requirements-lyrics.txt
+   ```
+
+   - ffmpeg は `imageio-ffmpeg` に同梱の物（字幕描画 libass 入り）を自動で使うので、別途インストール不要です。
+     PATH に自分の ffmpeg がある場合は、それが libass に対応していればそちらを使います。
+   - `faster-whisper` は歌詞タイミングの自動合わせに使います。**初回実行時だけ**音声認識モデル
+     （small ≈ 500MB）をダウンロードし、以後はオフラインで動きます。
+3. （任意・精度をさらに上げたい場合）
+
+   ```bat
+   pip install stable-ts demucs
+   ```
+
+   - `stable-ts` … 歌詞テキストとボーカルの**強制アラインメント**（最優先で使われます）
+   - `demucs` … 伴奏を消してボーカルだけにしてから解析（入っていれば自動で使用）
+   - どちらも PyTorch が入るため数 GB あります。NVIDIA GPU がある場合は先に
+     https://pytorch.org/get-started/locally/ の手順で CUDA 版 PyTorch を入れると高速です。
+
+日本語フォントは `fonts/NotoSansJP-Black.otf`（SIL Open Font License, `fonts/OFL.txt`）を同梱しています。
+
+## 2. 使い方
+
+```bat
+python generate_tiktok.py
+```
+
+- `input/` の中から音源・歌詞・背景を**自動検出**します（`input/` に音源が無ければ、このスクリプトと同じフォルダも探します）。
+  - ファイル名は自由（日本語名も OK）。複数ある場合は `song` / `lyrics`・`歌詞` / `background`・`bg`・`背景`
+    を含む名前が優先されます。背景は動画 > 画像の順で、`bg1.jpg` `bg2.jpg` … のように**背景らしい名前の画像が
+    複数あると、小節頭でクロスフェードしながら切り替わるスライドショー**になります。
+  - 背景が無い場合はゆっくり動くグラデーション背景、歌詞が無い場合は字幕なしで作ります。
+- 次の曲を作るときは `input/` の 3 ファイルを入れ替えて同じコマンドを実行するだけです。
+  前回の `final_tiktok.mp4` や字幕は削除せず `output/_history/<日時>/` に退避されます。
+
+| オプション | 内容 |
+|---|---|
+| `--preview` | 半分の解像度で素早く書き出し（`final_tiktok_preview.mp4`）。見た目の確認用 |
+| `--variants 3` | 背景の動きを変えた動画を 3 本作る（`final_tiktok.mp4`, `final_tiktok_v2.mp4`, `_v3`）|
+| `--method whisper` | タイミング推定方法を指定（`auto` / `lrc` / `align` / `whisper` / `heuristic`）|
+| `--ass output/lyrics.ass` | 手で直した ASS 字幕をそのまま使って再描画 |
+| `--audio 曲.wav --lyrics 歌詞.txt --background 背景.mov` | 使うファイルを直接指定 |
+| `--input 別フォルダ --output 出力先` | 素材フォルダ・出力先を変える |
+| `--batch songs` | `songs/曲A/`, `songs/曲B/` … を 1 曲ずつまとめて作成（出力は `output/曲A/` …）|
+| `-v` | 詳しい進行状況を表示 |
+
+## 3. 歌詞ファイルの書き方
+
+```
+[Intro]
+
+[Verse]
+夜明け前の 交差点
+信号待ちの 君を見てた
+
+[Chorus]
+走り出せ *今夜* だけは
+誰にも止められない
+```
+
+- 1 行 = 1 フレーズ。空行や `[Verse]` `[Chorus]` などのタグ（Suno の歌詞そのままで OK）でブロックを区切ります。
+- **サビ判定**: `[Chorus]` `[サビ]` `[Hook]` タグ → 無ければ「繰り返されるブロック」 → 無ければ「音量の大きいブロック」
+  の順で自動判定し、サビは文字を少し大きく・ポップするアニメーションで表示します。
+- **強調**: `*今夜*` のように `*` で囲んだ語は大きく・黄色で表示。囲みが無い場合は、繰り返し出る
+  カタカナ語・英単語・スペース区切りの短い語を自動で強調します（`config.json` の `emphasis.words` で指定も可）。
+  1 フレーズで強調するのは 1 語まで（`max_per_phrase`）なので「重要な単語だけ」が目立ちます。
+- 長い行は、スペース → 句読点 → 助詞のあと（「〜の」「〜を」の後ろ）など自然な位置で
+  短いフレーズ・最大 2 行に自動で分割し、画面幅からはみ出す場合は文字を縮めて収めます。
+- `#` で始まる行はコメントとして無視します。文字コードは UTF-8 / Shift_JIS / UTF-16 どれでも読めます。
+
+## 4. 歌詞タイミングの決め方（自動）
+
+`timing.method = "auto"` のとき、使えるものを上から順に試します。
+
+| 順 | 方法 | 必要なもの | 精度 |
+|---|---|---|---|
+| 0 | 歌詞ファイルが LRC 形式（`[00:12.30]歌詞`）ならその時刻を使う | なし | 指定どおり |
+| 1 | **stable-ts で歌詞テキストとボーカルを強制アラインメント** | `pip install stable-ts` | ◎ |
+| 2 | **Whisper で文字起こし → 歌詞と文字単位で突き合わせ**（漢字/かなの違いは読みに直して比較） | `faster-whisper`（requirements に含む） | ○ |
+| 3 | 歌声らしさ（中央定位の人声帯域）・無音・曲構成の切れ目・ビートから推定 | なし | △（目安） |
+
+- 1・2 は `demucs` が入っていればボーカルを分離してから解析します。結果は `output/_work/cache/` に保存され、
+  同じ曲なら 2 回目以降は解析をスキップします（デザインだけ変えて何度も作り直すのが速い）。
+- 一致率が低い（`timing.min_match_ratio` 未満）場合やモデルのダウンロードに失敗した場合は、自動で次の方法に切り替え、
+  理由をログに残します。
+- どの方法でも最後に、表示を少し早める（`lead_in_sec`）→ 近くの拍に吸着（`beat_snap`）→ 重なり防止・最短/最長表示時間の調整
+  を行い、**歌詞の切り替えがビートに乗る**ようにしています。
+
+### ずれを直したいとき
+
+1. `output/lyrics.lrc` をメモ帳で開き、ずれている行の `[分:秒.百分の一秒]` を直す
+2. `input/lyrics.lrc` として保存（`.lrc` があれば `.txt` より優先されます）
+3. もう一度 `python generate_tiktok.py`
+
+全体が一定量ずれているだけなら `config.json` の `timing.offset_sec`（例: `-0.2` で 0.2 秒早く）で調整できます。
+細かな見た目を 1 か所だけ直したい場合は `output/lyrics.ass` を直接編集し `--ass output/lyrics.ass` で再描画できます。
+
+## 5. config.json の設定（`"lyrics_video"` の中）
+
+`config.json` はダンス動画パイプライン（下記）と共用で、歌詞動画の設定は `"lyrics_video"` の中にあります。
+書かなかった項目は既定値が使われます。
+
+| 項目 | 既定値 | 内容 |
+|---|---|---|
+| **文字サイズ** `font.size` | `92` | 1080px 幅での文字の大きさ（px）。解像度を変えても比率は自動で合わせます |
+| **フォント** `font.file` | `"auto"` | フォントファイル（例 `"fonts/MPLUSRounded1c-Black.ttf"`）。`fonts/` に自分で入れたフォントがあれば auto でも最優先 |
+| `font.name` | `"auto"` | Windows にインストール済みのフォント名で指定する場合（例 `"Meiryo"`, `"BIZ UDPGothic"`）|
+| `font.bold` | `true` | 太字 |
+| **文字位置** `subtitle.position_y` | `0.60` | 歌詞の中心の高さ（0=上端, 1=下端）。0.5〜0.65 が中央〜中央下 |
+| `subtitle.margin_x` | `90` | 左右の余白（px）。TikTok の右側ボタンに被らないよう広めに |
+| `subtitle.safe_top` / `safe_bottom` | `0.14` / `0.24` | 上下の安全領域（画面比）。TikTok の説明文・ボタンに被らない範囲に歌詞を収めます |
+| **字幕の最大行数** `subtitle.max_lines` | `2` | 一度に表示する最大行数 |
+| `subtitle.phrase_max_chars` | `12` | 1 フレーズの目安の文字数（全角換算）。小さくするほど短く区切って切り替えが増えます |
+| `subtitle.max_chars_per_line` | `0` | 1 行の最大文字数（0 = 画面幅から自動計算）|
+| **字幕色** `subtitle.primary_color` | `"#FFFFFF"` | 文字色 |
+| **縁取り** `subtitle.outline` / `outline_color` / `outline_blur` | `6` / `"#000000"` / `1.5` | 縁取りの太さ・色・ぼかし |
+| `subtitle.shadow` / `shadow_color` / `shadow_alpha` | `3` / `"#000000"` / `0.55` | 影の距離・色・透明度 |
+| `subtitle.letter_spacing` / `line_spacing` | `1` / `0.18` | 字間（px）・行間（文字サイズ比）|
+| **字幕アニメーション** `subtitle.animation` | `"slide_up"` | `fade` / `slide_up`（下からふわっと）/ `pop`（ポンと弾む）/ `zoom`（ゆっくり拡大）/ `blur`（ぼかしから浮かぶ）/ `none` |
+| `subtitle.fade_in_ms` / `fade_out_ms` | `180` / `160` | フェードの長さ |
+| `subtitle.lead_in_sec` | `0.12` | 歌い出しより少し早く表示する秒数 |
+| `subtitle.hold_sec` / `min_duration` / `max_duration` | `0.45` / `0.8` / `6.0` | 歌い終わり後の表示時間・最短/最長表示時間 |
+| `subtitle.beat_snap` / `beat_snap_tolerance` | `true` / `0.16` | 切り替えを近くの拍（半拍）に合わせる / 合わせる最大ずれ（秒）|
+| **サビの文字強調** `chorus.scale` | `1.15` | サビの文字サイズ倍率 |
+| `chorus.animation` / `chorus.color` | `"pop"` / `null` | サビだけのアニメーション・文字色（null = 通常と同じ）|
+| `chorus.detect` | `"auto"` | サビ判定: `auto` / `repeat`（繰り返し）/ `energy`（音量）|
+| `emphasis.scale` / `emphasis.color` | `1.28` / `"#FFE45C"` | 強調語の倍率・色 |
+| `emphasis.auto` / `emphasis.words` | `true` / `[]` | 強調語の自動抽出 / 必ず強調する語のリスト |
+| **動画解像度** `video.width` / `video.height` | `1080` / `1920` | 出力解像度（9:16）|
+| **FPS** `video.fps` | `30` | フレームレート |
+| `video.crf` / `video.preset` | `18` / `"slow"` | 画質（小さいほど高画質）/ エンコード速度（`medium` にすると速い）|
+| `video.audio_bitrate` / `audio_sample_rate` | `"320k"` / `"source"` | 音声ビットレート / サンプルレート（source = 元のまま）。元が AAC なら再エンコードせずコピー |
+| `video.fade_in_sec` / `fade_out_sec` | `0.4` / `1.2` | 動画の最初と最後のフェード |
+| **背景の明るさ** `background.brightness` | `0.78` | 背景の明るさ（1.0 = そのまま、小さいほど暗く＝歌詞が読みやすい）|
+| `background.contrast` / `saturation` / `blur` / `vignette` | `1.0` / `1.0` / `0` / `true` | コントラスト・彩度・ぼかし・周辺減光 |
+| `background.text_scrim` | `0.28` | 歌詞の周りだけ帯状にうっすら暗くする濃さ（0 で無効）|
+| `background.fit` | `"cover"` | `cover`（縦にクロップ）/ `blur`（全体を表示し余白はぼかし背景）/ `auto`（横長素材だけ blur）|
+| `background.video_start_sec` | `0` | 背景動画の使い始め位置 |
+| `background.loop_crossfade_sec` | `1.0` | 背景動画が曲より短いときループの継ぎ目をクロスフェードする秒数（急なカットを防ぐ）|
+| `background.image_motion` | `"auto"` | 画像の動き: `zoom_in` / `zoom_out` / `pan_left` / `pan_right` / `pan_up` / `pan_down` / `zoom_in_left` / `zoom_out_right`、`auto`、または `["zoom_in","pan_left"]` のようなリスト |
+| `background.image_zoom` | `1.15` | Ken Burns のズーム量 |
+| `background.image_crossfade_sec` | `1.2` | 複数画像の切り替えクロスフェード |
+| `background.motion_seed` | `0` | 数字を変えると auto の動きの組み合わせが変わる |
+| `timing.method` | `"auto"` | 上記「タイミングの決め方」参照 |
+| `timing.whisper_model` | `"small"` | `base`（速い）/ `small` / `medium` / `large-v3`（高精度・遅い）|
+| `timing.language` / `device` | `"ja"` / `"auto"` | 歌の言語 / `cpu` / `cuda` |
+| `timing.vocal_separation` | `"auto"` | demucs があれば使う / `true` / `false` |
+| `timing.offset_sec` | `0.0` | 全体のタイミングを一律にずらす（秒）|
+| `variants` | `1` | 1 回で作る本数（`--variants` と同じ）|
+| `files.audio` / `lyrics` / `background` | `null` | ファイルを固定したい場合にパスを書く |
+
+## 6. 動画の仕様
+
+- 1080x1920（9:16）/ 30fps / H.264 High@4.2 / yuv420p / BT.709 / CRF 18
+- 音声: AAC 320kbps（元が AAC ならコピーで無劣化）、長さは音源と同じ
+- `+faststart` 付き MP4（スマホからそのまま TikTok にアップロードできます）
+- 背景動画: 曲より長ければトリミング、短ければ継ぎ目をクロスフェードしてループ。縦にクロップ（または blur fit）
+- 背景画像: 3 倍の解像度でズームしてから縮小するので、ゆっくりした Ken Burns でもガタつきません
+
+## 7. トラブルシューティング
+
+エラーが出ると「エラー: 〜」「対処: 〜」と表示され、詳細は `output/logs/generate_<日時>.log` に残ります。
+
+| 症状 | 対処 |
+|---|---|
+| `ModuleNotFoundError` | `pip install -r requirements-lyrics.txt` |
+| `ffmpeg が見つかりません` / `libass に対応していません` | `pip install -U imageio-ffmpeg`（または gyan.dev の full 版 ffmpeg を PATH に）|
+| `whisper が失敗しました`（ダウンロード失敗など）| ネット接続を確認。失敗しても音声解析で推定して最後まで作ります |
+| 文字が□になる / 別のフォントに見える | ログに「代用されています」と出ていないか確認し、`font.file` に日本語フォントを指定 |
+| タイミングがずれる | 「ずれを直したいとき」を参照。`timing.whisper_model` を `medium` に、`pip install stable-ts demucs` も効果大 |
+| 文字が TikTok のボタンに被る | `subtitle.position_y` を 0.55 前後に、`margin_x` を大きく |
+| 処理が遅い | `video.preset` を `"medium"`、確認中は `--preview` |
+
+---
+
+# （別ツール）TikTok AI ダンス動画 自動制作パイプライン（run_all.py）
 
 約 51 秒のオリジナル曲 + 男性ダンサーの基準画像 1 枚から、**曲に同期した 9:16 / 1080x1920 の K-POP 風ダンス動画**を作るためのツール一式です。
 

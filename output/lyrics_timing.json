@@ -1,0 +1,121 @@
+{
+  "method": "heuristic",
+  "audio": "/home/user/keiba-ai/input/song.mp3",
+  "lyrics": "/home/user/keiba-ai/input/lyrics.txt",
+  "phrases": [
+    {
+      "start": 4.261,
+      "end": 7.208,
+      "rows": [
+        "夜明け前の 交差点"
+      ],
+      "chorus": false,
+      "sung": [
+        4.412,
+        7.403
+      ]
+    },
+    {
+      "start": 7.268,
+      "end": 12.082,
+      "rows": [
+        "信号待ちの",
+        "君を見てた"
+      ],
+      "chorus": false,
+      "sung": [
+        7.404,
+        11.632
+      ]
+    },
+    {
+      "start": 12.237,
+      "end": 16.635,
+      "rows": [
+        "言えないままの",
+        "言葉が"
+      ],
+      "chorus": false,
+      "sung": [
+        12.307,
+        16.764
+      ]
+    },
+    {
+      "start": 16.695,
+      "end": 22.695,
+      "rows": [
+        "胸の奥で",
+        "鳴り止まない"
+      ],
+      "chorus": false,
+      "sung": [
+        16.765,
+        23.173
+      ]
+    },
+    {
+      "start": 23.615,
+      "end": 27.99,
+      "rows": [
+        "走り出せ",
+        "今夜 だけは"
+      ],
+      "chorus": true,
+      "sung": [
+        23.708,
+        28.122
+      ]
+    },
+    {
+      "start": 28.05,
+      "end": 32.053,
+      "rows": [
+        "誰にも",
+        "止められない"
+      ],
+      "chorus": true,
+      "sung": [
+        28.123,
+        32.459
+      ]
+    },
+    {
+      "start": 32.113,
+      "end": 36.871,
+      "rows": [
+        "君となら",
+        "どこまでも"
+      ],
+      "chorus": true,
+      "sung": [
+        32.206,
+        37.022
+      ]
+    },
+    {
+      "start": 36.931,
+      "end": 40.48,
+      "rows": [
+        "光の先へ Go"
+      ],
+      "chorus": true,
+      "sung": [
+        37.023,
+        40.03
+      ]
+    },
+    {
+      "start": 42.794,
+      "end": 48.794,
+      "rows": [
+        "まだ 夢の途中"
+      ],
+      "chorus": false,
+      "sung": [
+        42.841,
+        50.038
+      ]
+    }
+  ]
+}

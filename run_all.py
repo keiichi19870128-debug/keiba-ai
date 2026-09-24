@@ -28,7 +28,7 @@ from dance_pipeline.segment import plan_segments  # noqa: E402
 
 
 def load_config() -> dict:
-    return json.loads((ROOT / "config.json").read_text())
+    return json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
 
 
 def out_dir(cfg: dict) -> Path:

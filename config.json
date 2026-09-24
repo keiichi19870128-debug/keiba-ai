@@ -66,5 +66,105 @@
         ]
       }
     }
+  },
+  "lyrics_video": {
+    "_説明": "generate_tiktok.py（歌詞付き縦動画）の設定。各項目の意味は README.md の「config.json の設定」を参照",
+    "input_dir": "input",
+    "output_dir": "output",
+    "output_name": "final_tiktok.mp4",
+    "files": {
+      "audio": null,
+      "lyrics": null,
+      "background": null
+    },
+    "video": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "crf": 18,
+      "preset": "slow",
+      "audio_bitrate": "320k",
+      "audio_sample_rate": "source",
+      "fade_in_sec": 0.4,
+      "fade_out_sec": 1.2
+    },
+    "font": {
+      "file": "auto",
+      "name": "auto",
+      "size": 92,
+      "bold": true
+    },
+    "subtitle": {
+      "position_y": 0.6,
+      "margin_x": 90,
+      "safe_top": 0.14,
+      "safe_bottom": 0.24,
+      "max_lines": 2,
+      "max_chars_per_line": 0,
+      "phrase_max_chars": 12,
+      "line_spacing": 0.18,
+      "primary_color": "#FFFFFF",
+      "outline_color": "#000000",
+      "outline": 6,
+      "outline_blur": 1.5,
+      "shadow": 3,
+      "shadow_color": "#000000",
+      "shadow_alpha": 0.55,
+      "letter_spacing": 1,
+      "animation": "slide_up",
+      "fade_in_ms": 180,
+      "fade_out_ms": 160,
+      "lead_in_sec": 0.12,
+      "hold_sec": 0.45,
+      "min_duration": 0.8,
+      "max_duration": 6.0,
+      "gap_sec": 0.06,
+      "beat_snap": true,
+      "beat_snap_tolerance": 0.16
+    },
+    "chorus": {
+      "enabled": true,
+      "detect": "auto",
+      "scale": 1.15,
+      "animation": "pop",
+      "color": null
+    },
+    "emphasis": {
+      "enabled": true,
+      "auto": true,
+      "words": [],
+      "scale": 1.28,
+      "color": "#FFE45C",
+      "max_auto_words": 6,
+      "max_per_phrase": 1
+    },
+    "background": {
+      "brightness": 0.78,
+      "contrast": 1.0,
+      "saturation": 1.0,
+      "blur": 0,
+      "vignette": true,
+      "text_scrim": 0.28,
+      "fit": "cover",
+      "video_start_sec": 0.0,
+      "loop_crossfade_sec": 1.0,
+      "image_motion": "auto",
+      "image_zoom": 1.15,
+      "image_crossfade_sec": 1.2,
+      "motion_seed": 0
+    },
+    "timing": {
+      "method": "auto",
+      "whisper_model": "small",
+      "language": "ja",
+      "device": "auto",
+      "compute_type": "auto",
+      "vocal_separation": "auto",
+      "use_lyrics_prompt": true,
+      "min_match_ratio": 0.2,
+      "offset_sec": 0.0
+    },
+    "variants": 1,
+    "keep_history": true
   }
 }
