@@ -1,0 +1,34 @@
+﻿[Script Info]
+; generate_tiktok.py が自動生成。手で直した場合は python generate_tiktok.py --ass output/lyrics.ass で再描画できます
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+YCbCr Matrix: TV.709
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Lyric,Noto Sans JP Black,92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H8C000000,-1,0,0,0,100,100,1,0,1,6,3,5,0,0,0,1
+Style: Chorus,Noto Sans JP Black,106,&H00FFFFFF,&H00FFFFFF,&H00000000,&H8C000000,-1,0,0,0,100,100,1,0,1,6.6,3,5,0,0,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.00,0:00:02.61,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}駅までの帰り道
+Dialogue: 1,0:00:02.67,0:00:05.95,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1107,540,1078,0,320)}いつもより
+Dialogue: 2,0:00:02.67,0:00:05.95,Lyric,,0,0,0,,{\an5\blur1.5\fade(255,0,255,90,270,3124,3284)\move(540,1241,540,1212,90,410)}{\fs97\1c&H005CE4FF\t(270,430,\fs118)}少し遠く{\fs92\1c&H00FFFFFF}感じた
+Dialogue: 1,0:00:06.01,0:00:08.62,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1180,540,1152,0,320)\fs89}何を話してたかなんて
+Dialogue: 1,0:00:08.68,0:00:10.95,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1178,540,1152,0,320)\fs81}もうほとんど覚えてない
+Dialogue: 1,0:00:11.01,0:00:14.29,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1176,540,1152,0,320)\fs74}ただ最後に{\fs77\1c&H005CE4FF\t(180,340,\fs94)}笑った顔{\fs74\1c&H00FFFFFF}だけ
+Dialogue: 1,0:00:14.35,0:00:16.55,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}妙に残ってる
+Dialogue: 1,0:00:16.61,0:00:18.96,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1180,540,1152,0,320)\fs89}連絡するほどでもない
+Dialogue: 1,0:00:19.02,0:00:21.96,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}忘れるほどでもない
+Dialogue: 1,0:00:22.02,0:00:23.96,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}信号が{\fs97\1c&H005CE4FF\t(180,340,\fs118)}青{\fs92\1c&H00FFFFFF}に変わって
+Dialogue: 1,0:00:24.02,0:00:26.97,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}みんな先に歩き出す
+Dialogue: 1,0:00:27.03,0:00:29.62,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}{\fs97\1c&H005CE4FF\t(180,340,\fs118)}俺だけ{\fs92\1c&H00FFFFFF}少し遅れて
+Dialogue: 1,0:00:29.68,0:00:30.96,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}さっきの時間を
+Dialogue: 1,0:00:31.02,0:00:32.31,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}引きずってる
+Dialogue: 1,0:00:32.37,0:00:35.29,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}好きだったとか
+Dialogue: 1,0:00:35.35,0:00:37.95,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}そんな話じゃない
+Dialogue: 1,0:00:38.01,0:00:40.30,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs88}ただ{\fs93\1c&H005CE4FF\t(180,340,\fs113)}もう一回{\fs88\1c&H00FFFFFF}くらい
+Dialogue: 1,0:00:40.36,0:00:44.56,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs88}{\fs93\1c&H005CE4FF\t(180,340,\fs113)}会っても{\fs88\1c&H00FFFFFF}よかったな

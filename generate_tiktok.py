@@ -54,7 +54,8 @@ def build_subtitles(inp, a, cfg: dict, out_dir: Path, work: Path, method: str | 
 
     L = layout_params(cfg)
     phrases = ly.split_into_phrases(lines, L["row_units"], L["phrase_units"], int(cfg["subtitle"]["max_lines"]),
-                                    float(cfg["chorus"]["scale"]) if cfg["chorus"]["enabled"] else 1.0)
+                                    float(cfg["chorus"]["scale"]) if cfg["chorus"]["enabled"] else 1.0,
+                                    float(cfg["emphasis"]["scale"]) if cfg["emphasis"]["enabled"] else 1.0)
     tm.phrase_times(phrases, ct, a, cfg, used)
     log.info("[字幕] %d フレーズ（1 行あたり最大 全角 %.0f 文字 / 最大 %s 行）",
              len(phrases), L["row_units"], cfg["subtitle"]["max_lines"])

@@ -326,7 +326,7 @@ def _trim(s: str, a: int, b: int) -> tuple[int, int]:
 
 
 def split_into_phrases(lines: list[LyricLine], row_units: float, phrase_units: float,
-                       max_lines: int, chorus_scale: float) -> list[Phrase]:
+                       max_lines: int, chorus_scale: float, emph_scale: float = 1.0) -> list[Phrase]:
     """各歌詞行を「一度に表示するフレーズ（1〜max_lines 行）」に分ける.
 
     row_units    : 1 行に入る全角文字数（画面幅と文字サイズから計算）
@@ -345,7 +345,9 @@ def split_into_phrases(lines: list[LyricLine], row_units: float, phrase_units: f
             seg = s[a:b]
             rows = [(a, b)]
             # 少しはみ出すだけなら 2 行に割らず、文字を少し縮めて 1 行で見せる（subtitles 側で自動縮小）
-            if units(seg) > r_units * 1.15 and max_lines >= 2:
+            # 強調語は大きく表示されるので、その分も幅に含めて判断する
+            extra = sum(units(s[max(ea, a):min(eb, b)]) for ea, eb in ln.emph if ea < b and a < eb)
+            if units(seg) + (emph_scale - 1) * extra > r_units * 1.15 and max_lines >= 2:
                 rows = [(a + x, a + y) for x, y in _split_rec(seg, 0, r_units)][:max_lines]
                 if rows[-1][1] < b:  # 行数を超えた分は最後の行に寄せる（下で文字サイズを縮めて収める）
                     rows[-1] = (rows[-1][0], b)

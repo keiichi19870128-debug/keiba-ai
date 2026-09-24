@@ -32,14 +32,20 @@ PALETTES = {
               (255, 225, 170), (255, 90, 150), (90, 170, 255), (255, 70, 70), (130, 110, 255)],
     "blue": [(90, 160, 255), (140, 200, 255), (200, 220, 255), (120, 110, 255), (80, 230, 230)],
     "warm": [(255, 150, 60), (255, 190, 110), (255, 225, 170), (255, 120, 80), (255, 210, 140)],
+    # 駅までの帰り道: 街灯の暖色・白い窓明かり・青信号の緑・赤信号
+    "street": [(255, 170, 80), (255, 170, 80), (255, 200, 130), (255, 225, 180), (255, 225, 180),
+               (70, 255, 150), (70, 255, 150), (255, 70, 60), (140, 190, 255)],
+}
+
+SKIES = {  # (上, 中, 下) の色
+    "night": ((6, 8, 24), (20, 14, 46), (34, 14, 38)),
+    "dusk": ((10, 14, 42), (40, 30, 80), (95, 45, 60)),   # 日が沈んだ直後の青〜紫〜残照
 }
 
 
-def gradient(W: int, H: int) -> np.ndarray:
+def gradient(W: int, H: int, sky: str = "night") -> np.ndarray:
     y = np.linspace(0, 1, H)[:, None, None]
-    top = np.array([6, 8, 24]) / 255
-    mid = np.array([20, 14, 46]) / 255
-    bot = np.array([34, 14, 38]) / 255
+    top, mid, bot = (np.array(c) / 255 for c in SKIES[sky])
     g = np.where(y < 0.55, top + (mid - top) * (y / 0.55), mid + (bot - mid) * ((y - 0.55) / 0.45))
     return np.broadcast_to(g, (H, W, 3)).astype(np.float32).copy()
 
@@ -87,7 +93,8 @@ def main() -> None:
     ap.add_argument("--seconds", type=float, default=16.0, help="ループ 1 周の長さ")
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--palette", choices=sorted(PALETTES), default="night")
-    ap.add_argument("--rain", type=float, default=1.0, help="雨の強さ (0 で雨なし)")
+    ap.add_argument("--rain", type=float, default=1.0, help="雨の強さ (0 で雨なし・窓の水滴もなし)")
+    ap.add_argument("--sky", choices=sorted(SKIES), default="night", help="空の色 (night / dusk)")
     args = ap.parse_args()
 
     W, H, F, T = args.width, args.height, args.fps, args.seconds
@@ -96,7 +103,7 @@ def main() -> None:
     pal = PALETTES[args.palette]
     k = W / 1080
 
-    base = gradient(W, H)
+    base = gradient(W, H, args.sky)
     pad = int(80 * k)  # 灯りのゆらぎ用の余白
     Wp, Hp = W + 2 * pad, H + 2 * pad
     layers = [  # (画像, 横ゆれ幅, 縦ゆれ幅, 明るさ)
@@ -112,12 +119,12 @@ def main() -> None:
                           np.float32)[..., None] / 255
         twinkle.append((img * mask, img * (1 - mask), ax, ay, gain, rng.uniform(0, 2 * math.pi)))
 
-    drops = glass_drops(W, H, int(420 * k * k), rng)
+    drops = glass_drops(W, H, int(420 * k * k * min(1.0, args.rain)), rng)
     drop_rgb, drop_a = drops[..., :3], drops[..., 3:4]
 
     # 窓を伝う雨粒: 1 周 T 秒で画面を整数回通過する速さにしてループさせる
     drips = [dict(x=rng.uniform(0, W), y0=rng.uniform(0, H), laps=int(rng.integers(1, 3)),
-                  r=rng.uniform(3, 5.5) * k, wob=rng.uniform(0, 2 * math.pi)) for _ in range(9)]
+                  r=rng.uniform(3, 5.5) * k, wob=rng.uniform(0, 2 * math.pi)) for _ in range(int(9 * min(1.0, args.rain)))]
     # 外の雨: 細い斜めの線
     streaks = [dict(x=rng.uniform(-200, W), y0=rng.uniform(0, H), laps=int(rng.integers(10, 16)),
                     L=rng.uniform(40, 90) * k, a=rng.uniform(0.12, 0.35)) for _ in range(int(110 * args.rain))]
