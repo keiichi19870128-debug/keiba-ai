@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+demo_assets/*.wav
+output/_history/
+output/clips/_old/
+output/_work/

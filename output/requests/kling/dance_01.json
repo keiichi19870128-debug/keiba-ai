@@ -1,0 +1,10 @@
+{
+  "model_name": "kling-v2-1",
+  "mode": "pro",
+  "image": "<base64 433180 chars>",
+  "prompt": "Full-body dance video of the same young man from the reference image, same face, same tousled black hair with soft bangs, same all-black outfit: oversized black button-up shirt-jacket over a black T-shirt, black belt, black cargo pants with hanging straps, chunky black sneakers, in the same bare concrete dance studio, two vertical warm LED light tubes on the left and right walls, glossy reflective grey floor, same moody low-key lighting. His signature pose is the pose in the reference image: right arm reaching toward the camera, left hand at his jaw, wide low stance. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.6s: he holds his signature pose almost still, only breathing. 1.6s-3.0s: he slowly pulls the right hand back and sweeps it through his hair while bringing his feet to shoulder width, slow head roll. 3.0s-4.4s: he step-touches right then left with relaxed shoulder bounces on the beat. 4.4s-5.8s: he does two sharp chest pops forward while bending the knees. 5.8s-7.3s: he crosses both arms in an X in front of his chest, then opens them and lands back in his signature pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+  "negative_prompt": "extra people, crowd, second dancer, camera cut, scene change, zoom, camera shake, cropped feet, cropped head, out of frame, distorted hands, extra fingers, extra limbs, missing limbs, twisted joints, deformed face, face change, outfit change, color change, hair change, background change, blurry, low quality, text, watermark, logo",
+  "cfg_scale": 0.5,
+  "duration": "10",
+  "image_tail": "<base64 433180 chars>"
+}

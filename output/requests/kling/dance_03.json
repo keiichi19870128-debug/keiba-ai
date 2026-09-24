@@ -1,0 +1,10 @@
+{
+  "model_name": "kling-v2-1",
+  "mode": "pro",
+  "image": "<base64 433180 chars>",
+  "prompt": "Full-body dance video of the same young man from the reference image, same face, same tousled black hair with soft bangs, same all-black outfit: oversized black button-up shirt-jacket over a black T-shirt, black belt, black cargo pants with hanging straps, chunky black sneakers, in the same bare concrete dance studio, two vertical warm LED light tubes on the left and right walls, glossy reflective grey floor, same moody low-key lighting. His signature pose is the pose in the reference image: right arm reaching toward the camera, left hand at his jaw, wide low stance. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.4s: he bounces his knees in place, getting stronger, while raising both arms from his sides up over his head. 1.4s-2.8s: he crosses his wrists above his head and twists his upper body left and right. 2.8s-4.3s: he sharply pulls both fists down to his chest with a strong chest pop, a clear hit. 4.3s-5.7s: he leans back slightly to build tension, then lands in his signature pose for the chorus. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+  "negative_prompt": "extra people, crowd, second dancer, camera cut, scene change, zoom, camera shake, cropped feet, cropped head, out of frame, distorted hands, extra fingers, extra limbs, missing limbs, twisted joints, deformed face, face change, outfit change, color change, hair change, background change, blurry, low quality, text, watermark, logo",
+  "cfg_scale": 0.5,
+  "duration": "5",
+  "image_tail": "<base64 433180 chars>"
+}

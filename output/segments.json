@@ -1,0 +1,1186 @@
+{
+  "source_audio": "input/song.mp3",
+  "reference_image": "input/dancer_reference.png",
+  "duration_sec": 51.72,
+  "bpm": 83.35,
+  "segments": [
+    {
+      "index": 1,
+      "id": "dance_01",
+      "start": 0.0,
+      "end": 7.268,
+      "duration": 7.268,
+      "cut_type_start": "start",
+      "cut_type_end": "downbeat",
+      "section": "intro",
+      "section_ja": "イントロ",
+      "chorus_part": null,
+      "sections_covered": [
+        {
+          "label": "intro",
+          "start": 0.0,
+          "end": 4.435
+        },
+        {
+          "label": "verse",
+          "start": 4.435,
+          "end": 7.268
+        }
+      ],
+      "beats": [
+        {
+          "time": 0.139,
+          "rel": 0.139,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 0.836,
+          "rel": 0.836,
+          "beat_in_bar": 4
+        },
+        {
+          "time": 1.556,
+          "rel": 1.556,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 2.276,
+          "rel": 2.276,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 2.995,
+          "rel": 2.995,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 3.715,
+          "rel": 3.715,
+          "beat_in_bar": 4
+        },
+        {
+          "time": 4.435,
+          "rel": 4.435,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 5.132,
+          "rel": 5.132,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 5.851,
+          "rel": 5.851,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 6.548,
+          "rel": 6.548,
+          "beat_in_bar": 4
+        }
+      ],
+      "n_beats": 10,
+      "accents": [
+        2.276,
+        3.715,
+        5.132,
+        6.548
+      ],
+      "energy": 0.284,
+      "is_first": true,
+      "is_last": false,
+      "template": "intro",
+      "move_name": "Wake Up（目覚め）",
+      "energy_ja": "静→動。溜めてから動き出す",
+      "is_hook": false,
+      "phases": [
+        {
+          "counts": "pickup",
+          "t_start": 0.0,
+          "t_end": 1.56,
+          "abs_start": 0.0,
+          "abs_end": 1.56,
+          "ja": "シグネチャーポーズのまま静止し、呼吸だけで胸を小さく上下させる（溜め）",
+          "en": "holds his signature pose almost still, only breathing",
+          "en_short": "holds the signature pose, breathing"
+        },
+        {
+          "counts": "1-2",
+          "t_start": 1.56,
+          "t_end": 3.0,
+          "abs_start": 1.56,
+          "abs_end": 3.0,
+          "ja": "1: 差し出した右手をゆっくり引き戻しながら髪をかき上げる。2: 同時に開いていた脚を肩幅に寄せ、首をゆっくり回す",
+          "en": "slowly pulls the right hand back and sweeps it through his hair while bringing his feet to shoulder width, slow head roll",
+          "en_short": "sweeps his right hand through his hair, feet come together"
+        },
+        {
+          "counts": "3-4",
+          "t_start": 3.0,
+          "t_end": 4.43,
+          "abs_start": 3.0,
+          "abs_end": 4.43,
+          "ja": "3-4: 右→左へステップタッチ。肩を拍に合わせて上下（ショルダーバウンス）",
+          "en": "step-touches right then left with relaxed shoulder bounces on the beat",
+          "en_short": "step-touches right and left with shoulder bounces"
+        },
+        {
+          "counts": "5-6",
+          "t_start": 4.43,
+          "t_end": 5.85,
+          "abs_start": 4.43,
+          "abs_end": 5.85,
+          "ja": "5-6: 胸を前に出すチェストポップ×2、膝を軽く曲げ重心を落とす",
+          "en": "does two sharp chest pops forward while bending the knees",
+          "en_short": "does two sharp chest pops, knees bent"
+        },
+        {
+          "counts": "7-8",
+          "t_start": 5.85,
+          "t_end": 7.27,
+          "abs_start": 5.85,
+          "abs_end": 7.27,
+          "ja": "7: 両腕を胸の前でクロス（X）→ 8: 腕を開きながら脚を大きく開き、シグネチャーポーズでキメ",
+          "en": "crosses both arms in an X in front of his chest, then opens them and lands back in his signature pose",
+          "en_short": "crosses arms in an X, then opens into the signature pose"
+        }
+      ],
+      "hint_ja": "序盤は動きを小さく、8 カウント目のキメで一気に大きく。",
+      "prompt": "Full-body dance video of the same young man from the reference image, same face, same tousled black hair with soft bangs, same all-black outfit: oversized black button-up shirt-jacket over a black T-shirt, black belt, black cargo pants with hanging straps, chunky black sneakers, in the same bare concrete dance studio, two vertical warm LED light tubes on the left and right walls, glossy reflective grey floor, same moody low-key lighting. His signature pose is the pose in the reference image: right arm reaching toward the camera, left hand at his jaw, wide low stance. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.6s: he holds his signature pose almost still, only breathing. 1.6s-3.0s: he slowly pulls the right hand back and sweeps it through his hair while bringing his feet to shoulder width, slow head roll. 3.0s-4.4s: he step-touches right then left with relaxed shoulder bounces on the beat. 4.4s-5.8s: he does two sharp chest pops forward while bending the knees. 5.8s-7.3s: he crosses both arms in an X in front of his chest, then opens them and lands back in his signature pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "prompt_short": "The man from the reference image dances in the concrete studio with LED tubes. Signature pose = his pose in the reference image. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.6s: he holds the signature pose, breathing. 1.6s-3.0s: he sweeps his right hand through his hair, feet come together. 3.0s-4.4s: he step-touches right and left with shoulder bounces. 4.4s-5.8s: he does two sharp chest pops, knees bent. 5.8s-7.3s: he crosses arms in an X, then opens into the signature pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "negative_prompt": "extra people, crowd, second dancer, camera cut, scene change, zoom, camera shake, cropped feet, cropped head, out of frame, distorted hands, extra fingers, extra limbs, missing limbs, twisted joints, deformed face, face change, outfit change, color change, hair change, background change, blurry, low quality, text, watermark, logo",
+      "continuity_ja": "開始フレーム＝基準画像（シグネチャーポーズ） / 区間末尾（カウント8）は必ずシグネチャーポーズに戻し、次区間(dance_02)の開始フレームと一致させる / 区間切り替え点は小節頭。0.2 秒の短いクロスフェードで接続 / 立ち位置は画面中央から動かさない（横移動は半歩〜1 歩まで）",
+      "reference_image": "input/dancer_reference.png",
+      "output_file": "clips/dance_01.mp4"
+    },
+    {
+      "index": 2,
+      "id": "dance_02",
+      "start": 7.268,
+      "end": 12.957,
+      "duration": 5.689,
+      "cut_type_start": "downbeat",
+      "cut_type_end": "downbeat",
+      "section": "verse",
+      "section_ja": "Aメロ",
+      "chorus_part": null,
+      "sections_covered": [
+        {
+          "label": "verse",
+          "start": 7.268,
+          "end": 12.957
+        }
+      ],
+      "beats": [
+        {
+          "time": 7.268,
+          "rel": 0.0,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 7.964,
+          "rel": 0.696,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 8.684,
+          "rel": 1.416,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 9.404,
+          "rel": 2.136,
+          "beat_in_bar": 4
+        },
+        {
+          "time": 10.124,
+          "rel": 2.856,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 10.82,
+          "rel": 3.552,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 11.54,
+          "rel": 4.272,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 12.237,
+          "rel": 4.969,
+          "beat_in_bar": 4
+        }
+      ],
+      "n_beats": 8,
+      "accents": [
+        0.0,
+        0.696,
+        2.136,
+        2.856,
+        3.552,
+        4.969
+      ],
+      "energy": 0.3197,
+      "is_first": false,
+      "is_last": false,
+      "template": "verse",
+      "move_name": "Glide Groove（グライド・グルーヴ）",
+      "energy_ja": "中。横揺れグルーヴで流れを作る",
+      "is_hook": false,
+      "phases": [
+        {
+          "counts": "1-2",
+          "t_start": 0.0,
+          "t_end": 1.42,
+          "abs_start": 7.27,
+          "abs_end": 8.68,
+          "ja": "1-2: シグネチャーポーズから右手を体に引き寄せ、左へ体を向けながらスライドステップ（腰でリズムを取る）",
+          "en": "draws the right arm in and glides one step to his left, hips swaying with the groove",
+          "en_short": "glides one step left, hips swaying"
+        },
+        {
+          "counts": "3-4",
+          "t_start": 1.42,
+          "t_end": 2.86,
+          "abs_start": 8.68,
+          "abs_end": 10.12,
+          "ja": "3-4: 右手の指先から左手の指先へアームウェーブ。同時に膝でダウンのリズム",
+          "en": "does a smooth arm wave from the right fingertips across to the left, knees bouncing down on each beat",
+          "en_short": "does a smooth arm wave, knees bouncing"
+        },
+        {
+          "counts": "5-6",
+          "t_start": 2.86,
+          "t_end": 4.27,
+          "abs_start": 10.12,
+          "abs_end": 11.54,
+          "ja": "5-6: 正面に戻り、右肩→左肩の順にショルダーヒット、首も一緒にアクセント",
+          "en": "turns back to face the camera and hits right shoulder then left shoulder with small head accents",
+          "en_short": "faces the camera, hits right then left shoulder"
+        },
+        {
+          "counts": "7-8",
+          "t_start": 4.27,
+          "t_end": 5.69,
+          "abs_start": 11.54,
+          "abs_end": 12.96,
+          "ja": "7: 体を右斜め 45° に向けて肩越しにカメラを見る → 8: 正面に戻りシグネチャーポーズ",
+          "en": "turns 45 degrees to his right, glances back over his shoulder at the camera, then snaps back into his signature pose",
+          "en_short": "turns 45 degrees, looks back over his shoulder, then snaps into the signature pose"
+        }
+      ],
+      "hint_ja": "足は小さく横移動のみ。フレームアウトしないよう前後移動は避ける。",
+      "prompt": "Full-body dance video of the same young man from the reference image, same face, same tousled black hair with soft bangs, same all-black outfit: oversized black button-up shirt-jacket over a black T-shirt, black belt, black cargo pants with hanging straps, chunky black sneakers, in the same bare concrete dance studio, two vertical warm LED light tubes on the left and right walls, glossy reflective grey floor, same moody low-key lighting. His signature pose is the pose in the reference image: right arm reaching toward the camera, left hand at his jaw, wide low stance. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.4s: he draws the right arm in and glides one step to his left, hips swaying with the groove. 1.4s-2.9s: he does a smooth arm wave from the right fingertips across to the left, knees bouncing down on each beat. 2.9s-4.3s: he turns back to face the camera and hits right shoulder then left shoulder with small head accents. 4.3s-5.7s: he turns 45 degrees to his right, glances back over his shoulder at the camera, then snaps back into his signature pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "prompt_short": "The man from the reference image dances in the concrete studio with LED tubes. Signature pose = his pose in the reference image. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.4s: he glides one step left, hips swaying. 1.4s-2.9s: he does a smooth arm wave, knees bouncing. 2.9s-4.3s: he faces the camera, hits right then left shoulder. 4.3s-5.7s: he turns 45 degrees, looks back over his shoulder, then snaps into the signature pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "negative_prompt": "extra people, crowd, second dancer, camera cut, scene change, zoom, camera shake, cropped feet, cropped head, out of frame, distorted hands, extra fingers, extra limbs, missing limbs, twisted joints, deformed face, face change, outfit change, color change, hair change, background change, blurry, low quality, text, watermark, logo",
+      "continuity_ja": "開始フレーム＝基準画像（シグネチャーポーズ） / 前区間(dance_01)の最後もシグネチャーポーズなので、同じ立ち位置・向きのまま始める / 区間末尾（カウント8）は必ずシグネチャーポーズに戻し、次区間(dance_03)の開始フレームと一致させる / 区間切り替え点は小節頭。0.2 秒の短いクロスフェードで接続 / 立ち位置は画面中央から動かさない（横移動は半歩〜1 歩まで）",
+      "reference_image": "input/dancer_reference.png",
+      "output_file": "clips/dance_02.mp4"
+    },
+    {
+      "index": 3,
+      "id": "dance_03",
+      "start": 12.957,
+      "end": 18.646,
+      "duration": 5.689,
+      "cut_type_start": "downbeat",
+      "cut_type_end": "downbeat",
+      "section": "pre_chorus",
+      "section_ja": "Bメロ(サビ前の盛り上げ)",
+      "chorus_part": null,
+      "sections_covered": [
+        {
+          "label": "pre_chorus",
+          "start": 12.957,
+          "end": 18.646
+        }
+      ],
+      "beats": [
+        {
+          "time": 12.957,
+          "rel": 0.0,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 13.653,
+          "rel": 0.696,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 14.373,
+          "rel": 1.416,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 15.07,
+          "rel": 2.113,
+          "beat_in_bar": 4
+        },
+        {
+          "time": 15.79,
+          "rel": 2.833,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 16.509,
+          "rel": 3.552,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 17.252,
+          "rel": 4.295,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 17.949,
+          "rel": 4.992,
+          "beat_in_bar": 4
+        }
+      ],
+      "n_beats": 8,
+      "accents": [
+        0.696,
+        2.113,
+        2.833,
+        3.552
+      ],
+      "energy": 0.3254,
+      "is_first": false,
+      "is_last": false,
+      "template": "pre_chorus",
+      "move_name": "Rise Up（ビルドアップ）",
+      "energy_ja": "中→高。拍ごとに鋭くなるビルドアップ",
+      "is_hook": false,
+      "phases": [
+        {
+          "counts": "1-2",
+          "t_start": 0.0,
+          "t_end": 1.42,
+          "abs_start": 12.96,
+          "abs_end": 14.37,
+          "ja": "1-2: その場で膝バウンス（だんだん強く）。両腕を体の横から頭上へゆっくり上げる",
+          "en": "bounces his knees in place, getting stronger, while raising both arms from his sides up over his head",
+          "en_short": "bounces his knees, raising both arms overhead"
+        },
+        {
+          "counts": "3-4",
+          "t_start": 1.42,
+          "t_end": 2.83,
+          "abs_start": 14.37,
+          "abs_end": 15.79,
+          "ja": "3-4: 頭上で手首をクロスし、上半身を左右にツイスト",
+          "en": "crosses his wrists above his head and twists his upper body left and right",
+          "en_short": "crosses wrists overhead, twisting his torso"
+        },
+        {
+          "counts": "5-6",
+          "t_start": 2.83,
+          "t_end": 4.29,
+          "abs_start": 15.79,
+          "abs_end": 17.25,
+          "ja": "5-6: 両拳を胸まで一気に引き下ろす（プルダウン）＋チェストポップ。ここが強いキメ",
+          "en": "sharply pulls both fists down to his chest with a strong chest pop, a clear hit",
+          "en_short": "pulls both fists down to his chest with a hard chest pop"
+        },
+        {
+          "counts": "7-8",
+          "t_start": 4.29,
+          "t_end": 5.69,
+          "abs_start": 17.25,
+          "abs_end": 18.65,
+          "ja": "7: 上体を少し後ろへ反らし溜める → 8: サビ頭に向けてシグネチャーポーズへ",
+          "en": "leans back slightly to build tension, then lands in his signature pose for the chorus",
+          "en_short": "leans back, then lands in the signature pose"
+        }
+      ],
+      "hint_ja": "サビ直前。5-6 のプルダウンを最も強いアクセントに。",
+      "prompt": "Full-body dance video of the same young man from the reference image, same face, same tousled black hair with soft bangs, same all-black outfit: oversized black button-up shirt-jacket over a black T-shirt, black belt, black cargo pants with hanging straps, chunky black sneakers, in the same bare concrete dance studio, two vertical warm LED light tubes on the left and right walls, glossy reflective grey floor, same moody low-key lighting. His signature pose is the pose in the reference image: right arm reaching toward the camera, left hand at his jaw, wide low stance. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.4s: he bounces his knees in place, getting stronger, while raising both arms from his sides up over his head. 1.4s-2.8s: he crosses his wrists above his head and twists his upper body left and right. 2.8s-4.3s: he sharply pulls both fists down to his chest with a strong chest pop, a clear hit. 4.3s-5.7s: he leans back slightly to build tension, then lands in his signature pose for the chorus. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "prompt_short": "The man from the reference image dances in the concrete studio with LED tubes. Signature pose = his pose in the reference image. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.4s: he bounces his knees, raising both arms overhead. 1.4s-2.8s: he crosses wrists overhead, twisting his torso. 2.8s-4.3s: he pulls both fists down to his chest with a hard chest pop. 4.3s-5.7s: he leans back, then lands in the signature pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "negative_prompt": "extra people, crowd, second dancer, camera cut, scene change, zoom, camera shake, cropped feet, cropped head, out of frame, distorted hands, extra fingers, extra limbs, missing limbs, twisted joints, deformed face, face change, outfit change, color change, hair change, background change, blurry, low quality, text, watermark, logo",
+      "continuity_ja": "開始フレーム＝基準画像（シグネチャーポーズ） / 前区間(dance_02)の最後もシグネチャーポーズなので、同じ立ち位置・向きのまま始める / 区間末尾（カウント8）は必ずシグネチャーポーズに戻し、次区間(dance_04)の開始フレームと一致させる / 区間切り替え点は小節頭。0.2 秒の短いクロスフェードで接続 / 立ち位置は画面中央から動かさない（横移動は半歩〜1 歩まで）",
+      "reference_image": "input/dancer_reference.png",
+      "output_file": "clips/dance_03.mp4"
+    },
+    {
+      "index": 4,
+      "id": "dance_04",
+      "start": 18.646,
+      "end": 24.311,
+      "duration": 5.665,
+      "cut_type_start": "downbeat",
+      "cut_type_end": "downbeat",
+      "section": "chorus",
+      "section_ja": "サビ",
+      "chorus_part": "A",
+      "sections_covered": [
+        {
+          "label": "chorus",
+          "start": 18.646,
+          "end": 24.311
+        }
+      ],
+      "beats": [
+        {
+          "time": 18.646,
+          "rel": 0.0,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 19.342,
+          "rel": 0.696,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 20.062,
+          "rel": 1.416,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 20.782,
+          "rel": 2.136,
+          "beat_in_bar": 4
+        },
+        {
+          "time": 21.478,
+          "rel": 2.832,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 22.198,
+          "rel": 3.552,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 22.918,
+          "rel": 4.272,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 23.615,
+          "rel": 4.969,
+          "beat_in_bar": 4
+        }
+      ],
+      "n_beats": 8,
+      "accents": [
+        1.068,
+        1.764,
+        2.832,
+        3.552,
+        4.969
+      ],
+      "energy": 0.4277,
+      "is_first": false,
+      "is_last": false,
+      "template": "chorus_A",
+      "move_name": "Reach & Frame（リーチ＆フレーム） ※ポイント振付",
+      "energy_ja": "高。曲の顔になる反復フック",
+      "is_hook": true,
+      "phases": [
+        {
+          "counts": "1",
+          "t_start": 0.0,
+          "t_end": 0.7,
+          "abs_start": 18.65,
+          "abs_end": 19.34,
+          "ja": "1: シグネチャーポーズ（右手をカメラへ差し出す／左手はあご）",
+          "en": "starts in his signature pose, right hand reaching to the camera",
+          "en_short": "reaches to the camera in the signature pose"
+        },
+        {
+          "counts": "2",
+          "t_start": 0.7,
+          "t_end": 1.42,
+          "abs_start": 19.34,
+          "abs_end": 20.06,
+          "ja": "2: 差し出した右手をぐっと握って胸に引き寄せる（“つかむ”）。重心を左脚へ",
+          "en": "closes the reaching hand into a fist and pulls it to his chest as if grabbing something, weight shifts to the left leg",
+          "en_short": "grabs the air and pulls the fist to his chest"
+        },
+        {
+          "counts": "3-4",
+          "t_start": 1.42,
+          "t_end": 2.83,
+          "abs_start": 20.06,
+          "abs_end": 21.48,
+          "ja": "3-4: 両手を胸→お腹へなで下ろしながら胸から腰へボディロール、膝を曲げて沈む",
+          "en": "slides both hands down from chest to waist with a slow body roll from chest to hips, sinking into bent knees",
+          "en_short": "slides both hands down his chest in a slow body roll, knees bending"
+        },
+        {
+          "counts": "5-6",
+          "t_start": 2.83,
+          "t_end": 4.27,
+          "abs_start": 21.48,
+          "abs_end": 22.92,
+          "ja": "5: 右足を寄せて体を左 45° に向け右肩ヒット → 6: 左肩ヒットで顔だけカメラへ",
+          "en": "steps the right foot in, turns 45 degrees left and hits the right shoulder, then the left shoulder as his head snaps to the camera",
+          "en_short": "turns 45 degrees left, hits right shoulder, then left shoulder, head snaps to camera"
+        },
+        {
+          "counts": "7-8",
+          "t_start": 4.27,
+          "t_end": 5.67,
+          "abs_start": 22.92,
+          "abs_end": 24.31,
+          "ja": "7: 腰を右→左にスウェイ → 8: 脚を開いてシグネチャーポーズでキメ（右手をカメラへ）",
+          "en": "sways his hips right then left, then opens his stance and hits his signature pose again, reaching to the camera",
+          "en_short": "sways his hips, then hits the signature pose again"
+        }
+      ],
+      "hint_ja": "“差し出す→つかむ→なで下ろす→肩・肩→差し出す”。サビで毎回繰り返す象徴的な振付。",
+      "prompt": "Full-body dance video of the same young man from the reference image, same face, same tousled black hair with soft bangs, same all-black outfit: oversized black button-up shirt-jacket over a black T-shirt, black belt, black cargo pants with hanging straps, chunky black sneakers, in the same bare concrete dance studio, two vertical warm LED light tubes on the left and right walls, glossy reflective grey floor, same moody low-key lighting. His signature pose is the pose in the reference image: right arm reaching toward the camera, left hand at his jaw, wide low stance. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-0.7s: he starts in his signature pose, right hand reaching to the camera. 0.7s-1.4s: he closes the reaching hand into a fist and pulls it to his chest as if grabbing something, weight shifts to the left leg. 1.4s-2.8s: he slides both hands down from chest to waist with a slow body roll from chest to hips, sinking into bent knees. 2.8s-4.3s: he steps the right foot in, turns 45 degrees left and hits the right shoulder, then the left shoulder as his head snaps to the camera. 4.3s-5.7s: he sways his hips right then left, then opens his stance and hits his signature pose again, reaching to the camera. Repeatable signature hook move. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "prompt_short": "The man from the reference image dances in the concrete studio with LED tubes. Signature pose = his pose in the reference image. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-0.7s: he reaches to the camera in the signature pose. 0.7s-1.4s: he grabs the air and pulls the fist to his chest. 1.4s-2.8s: he slides both hands down his chest in a slow body roll, knees bending. 2.8s-4.3s: he turns 45 degrees left, hits right shoulder, then left shoulder, head snaps to camera. 4.3s-5.7s: he sways his hips, then hits the signature pose again. Repeatable signature hook move. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "negative_prompt": "extra people, crowd, second dancer, camera cut, scene change, zoom, camera shake, cropped feet, cropped head, out of frame, distorted hands, extra fingers, extra limbs, missing limbs, twisted joints, deformed face, face change, outfit change, color change, hair change, background change, blurry, low quality, text, watermark, logo",
+      "continuity_ja": "開始フレーム＝基準画像（シグネチャーポーズ） / 前区間(dance_03)の最後もシグネチャーポーズなので、同じ立ち位置・向きのまま始める / 区間末尾（カウント8）は必ずシグネチャーポーズに戻し、次区間(dance_05)の開始フレームと一致させる / 区間切り替え点は小節頭。0.2 秒の短いクロスフェードで接続 / 立ち位置は画面中央から動かさない（横移動は半歩〜1 歩まで）",
+      "reference_image": "input/dancer_reference.png",
+      "output_file": "clips/dance_04.mp4"
+    },
+    {
+      "index": 5,
+      "id": "dance_05",
+      "start": 24.311,
+      "end": 30.0,
+      "duration": 5.689,
+      "cut_type_start": "downbeat",
+      "cut_type_end": "downbeat",
+      "section": "chorus",
+      "section_ja": "サビ",
+      "chorus_part": "A",
+      "sections_covered": [
+        {
+          "label": "chorus",
+          "start": 24.311,
+          "end": 30.0
+        }
+      ],
+      "beats": [
+        {
+          "time": 24.311,
+          "rel": 0.0,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 25.031,
+          "rel": 0.72,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 25.728,
+          "rel": 1.417,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 26.448,
+          "rel": 2.137,
+          "beat_in_bar": 4
+        },
+        {
+          "time": 27.167,
+          "rel": 2.856,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 27.864,
+          "rel": 3.553,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 28.584,
+          "rel": 4.273,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 29.304,
+          "rel": 4.993,
+          "beat_in_bar": 4
+        }
+      ],
+      "n_beats": 8,
+      "accents": [
+        0.72,
+        2.369,
+        3.553,
+        4.993
+      ],
+      "energy": 0.4277,
+      "is_first": false,
+      "is_last": false,
+      "template": "chorus_A",
+      "move_name": "Reach & Frame（リーチ＆フレーム） ※ポイント振付",
+      "energy_ja": "高。曲の顔になる反復フック",
+      "is_hook": true,
+      "phases": [
+        {
+          "counts": "1",
+          "t_start": 0.0,
+          "t_end": 0.72,
+          "abs_start": 24.31,
+          "abs_end": 25.03,
+          "ja": "1: シグネチャーポーズ（右手をカメラへ差し出す／左手はあご）",
+          "en": "starts in his signature pose, right hand reaching to the camera",
+          "en_short": "reaches to the camera in the signature pose"
+        },
+        {
+          "counts": "2",
+          "t_start": 0.72,
+          "t_end": 1.42,
+          "abs_start": 25.03,
+          "abs_end": 25.73,
+          "ja": "2: 差し出した右手をぐっと握って胸に引き寄せる（“つかむ”）。重心を左脚へ",
+          "en": "closes the reaching hand into a fist and pulls it to his chest as if grabbing something, weight shifts to the left leg",
+          "en_short": "grabs the air and pulls the fist to his chest"
+        },
+        {
+          "counts": "3-4",
+          "t_start": 1.42,
+          "t_end": 2.86,
+          "abs_start": 25.73,
+          "abs_end": 27.17,
+          "ja": "3-4: 両手を胸→お腹へなで下ろしながら胸から腰へボディロール、膝を曲げて沈む",
+          "en": "slides both hands down from chest to waist with a slow body roll from chest to hips, sinking into bent knees",
+          "en_short": "slides both hands down his chest in a slow body roll, knees bending"
+        },
+        {
+          "counts": "5-6",
+          "t_start": 2.86,
+          "t_end": 4.27,
+          "abs_start": 27.17,
+          "abs_end": 28.58,
+          "ja": "5: 右足を寄せて体を左 45° に向け右肩ヒット → 6: 左肩ヒットで顔だけカメラへ",
+          "en": "steps the right foot in, turns 45 degrees left and hits the right shoulder, then the left shoulder as his head snaps to the camera",
+          "en_short": "turns 45 degrees left, hits right shoulder, then left shoulder, head snaps to camera"
+        },
+        {
+          "counts": "7-8",
+          "t_start": 4.27,
+          "t_end": 5.69,
+          "abs_start": 28.58,
+          "abs_end": 30.0,
+          "ja": "7: 腰を右→左にスウェイ → 8: 脚を開いてシグネチャーポーズでキメ（右手をカメラへ）",
+          "en": "sways his hips right then left, then opens his stance and hits his signature pose again, reaching to the camera",
+          "en_short": "sways his hips, then hits the signature pose again"
+        }
+      ],
+      "hint_ja": "“差し出す→つかむ→なで下ろす→肩・肩→差し出す”。サビで毎回繰り返す象徴的な振付。",
+      "prompt": "Full-body dance video of the same young man from the reference image, same face, same tousled black hair with soft bangs, same all-black outfit: oversized black button-up shirt-jacket over a black T-shirt, black belt, black cargo pants with hanging straps, chunky black sneakers, in the same bare concrete dance studio, two vertical warm LED light tubes on the left and right walls, glossy reflective grey floor, same moody low-key lighting. His signature pose is the pose in the reference image: right arm reaching toward the camera, left hand at his jaw, wide low stance. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-0.7s: he starts in his signature pose, right hand reaching to the camera. 0.7s-1.4s: he closes the reaching hand into a fist and pulls it to his chest as if grabbing something, weight shifts to the left leg. 1.4s-2.9s: he slides both hands down from chest to waist with a slow body roll from chest to hips, sinking into bent knees. 2.9s-4.3s: he steps the right foot in, turns 45 degrees left and hits the right shoulder, then the left shoulder as his head snaps to the camera. 4.3s-5.7s: he sways his hips right then left, then opens his stance and hits his signature pose again, reaching to the camera. Repeatable signature hook move. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "prompt_short": "The man from the reference image dances in the concrete studio with LED tubes. Signature pose = his pose in the reference image. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-0.7s: he reaches to the camera in the signature pose. 0.7s-1.4s: he grabs the air and pulls the fist to his chest. 1.4s-2.9s: he slides both hands down his chest in a slow body roll, knees bending. 2.9s-4.3s: he turns 45 degrees left, hits right shoulder, then left shoulder, head snaps to camera. 4.3s-5.7s: he sways his hips, then hits the signature pose again. Repeatable signature hook move. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "negative_prompt": "extra people, crowd, second dancer, camera cut, scene change, zoom, camera shake, cropped feet, cropped head, out of frame, distorted hands, extra fingers, extra limbs, missing limbs, twisted joints, deformed face, face change, outfit change, color change, hair change, background change, blurry, low quality, text, watermark, logo",
+      "continuity_ja": "開始フレーム＝基準画像（シグネチャーポーズ） / 前区間(dance_04)の最後もシグネチャーポーズなので、同じ立ち位置・向きのまま始める / 区間末尾（カウント8）は必ずシグネチャーポーズに戻し、次区間(dance_06)の開始フレームと一致させる / 区間切り替え点は小節頭。0.2 秒の短いクロスフェードで接続 / 立ち位置は画面中央から動かさない（横移動は半歩〜1 歩まで）",
+      "reference_image": "input/dancer_reference.png",
+      "output_file": "clips/dance_05.mp4"
+    },
+    {
+      "index": 6,
+      "id": "dance_06",
+      "start": 30.0,
+      "end": 35.689,
+      "duration": 5.689,
+      "cut_type_start": "downbeat",
+      "cut_type_end": "downbeat",
+      "section": "chorus",
+      "section_ja": "サビ",
+      "chorus_part": "B",
+      "sections_covered": [
+        {
+          "label": "chorus",
+          "start": 30.0,
+          "end": 35.689
+        }
+      ],
+      "beats": [
+        {
+          "time": 30.0,
+          "rel": 0.0,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 30.697,
+          "rel": 0.697,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 31.417,
+          "rel": 1.417,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 32.113,
+          "rel": 2.113,
+          "beat_in_bar": 4
+        },
+        {
+          "time": 32.833,
+          "rel": 2.833,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 33.553,
+          "rel": 3.553,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 34.273,
+          "rel": 4.273,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 34.969,
+          "rel": 4.969,
+          "beat_in_bar": 4
+        }
+      ],
+      "n_beats": 8,
+      "accents": [
+        0.697,
+        2.113,
+        3.553,
+        4.969
+      ],
+      "energy": 0.4136,
+      "is_first": false,
+      "is_last": false,
+      "template": "chorus_B",
+      "move_name": "Slide & Reveal（スライド＆リビール）",
+      "energy_ja": "高。フックの変化形で飽きさせない",
+      "is_hook": false,
+      "phases": [
+        {
+          "counts": "1-2",
+          "t_start": 0.0,
+          "t_end": 1.42,
+          "abs_start": 30.0,
+          "abs_end": 31.42,
+          "ja": "1-2: 左へ大きくサイドスライド。右腕で頭上に大きな弧を描く",
+          "en": "does a wide side slide to his left while his right arm draws a big arc over his head",
+          "en_short": "slides left, right arm drawing a big arc overhead"
+        },
+        {
+          "counts": "3-4",
+          "t_start": 1.42,
+          "t_end": 2.83,
+          "abs_start": 31.42,
+          "abs_end": 32.83,
+          "ja": "3-4: 腰を大きく 1 回転させるヒップロール、両手は腰",
+          "en": "rolls his hips in a big circle with both hands on his hips",
+          "en_short": "rolls his hips in a big circle, hands on hips"
+        },
+        {
+          "counts": "5-6",
+          "t_start": 2.83,
+          "t_end": 4.27,
+          "abs_start": 32.83,
+          "abs_end": 34.27,
+          "ja": "5-6: 左手で顔の前を横切り（リビール）、首を傾けて目線をカメラへ。右足を半歩引く",
+          "en": "passes his left hand across his face like a reveal, tilts his head and locks eyes with the camera, right foot steps back",
+          "en_short": "passes his hand across his face as a reveal, eyes to camera"
+        },
+        {
+          "counts": "7-8",
+          "t_start": 4.27,
+          "t_end": 5.69,
+          "abs_start": 34.27,
+          "abs_end": 35.69,
+          "ja": "7: 両肩をすくめるショルダーシュラッグ → 8: シグネチャーポーズへ",
+          "en": "does a sharp shoulder shrug, then returns to his signature pose",
+          "en_short": "shrugs sharply, then returns to the signature pose"
+        }
+      ],
+      "hint_ja": "フックと同じ“最後はシグネチャーポーズ”で統一感を保つ。",
+      "prompt": "Full-body dance video of the same young man from the reference image, same face, same tousled black hair with soft bangs, same all-black outfit: oversized black button-up shirt-jacket over a black T-shirt, black belt, black cargo pants with hanging straps, chunky black sneakers, in the same bare concrete dance studio, two vertical warm LED light tubes on the left and right walls, glossy reflective grey floor, same moody low-key lighting. His signature pose is the pose in the reference image: right arm reaching toward the camera, left hand at his jaw, wide low stance. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.4s: he does a wide side slide to his left while his right arm draws a big arc over his head. 1.4s-2.8s: he rolls his hips in a big circle with both hands on his hips. 2.8s-4.3s: he passes his left hand across his face like a reveal, tilts his head and locks eyes with the camera, right foot steps back. 4.3s-5.7s: he does a sharp shoulder shrug, then returns to his signature pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "prompt_short": "The man from the reference image dances in the concrete studio with LED tubes. Signature pose = his pose in the reference image. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.4s: he slides left, right arm drawing a big arc overhead. 1.4s-2.8s: he rolls his hips in a big circle, hands on hips. 2.8s-4.3s: he passes his hand across his face as a reveal, eyes to camera. 4.3s-5.7s: he shrugs sharply, then returns to the signature pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "negative_prompt": "extra people, crowd, second dancer, camera cut, scene change, zoom, camera shake, cropped feet, cropped head, out of frame, distorted hands, extra fingers, extra limbs, missing limbs, twisted joints, deformed face, face change, outfit change, color change, hair change, background change, blurry, low quality, text, watermark, logo",
+      "continuity_ja": "開始フレーム＝基準画像（シグネチャーポーズ） / 前区間(dance_05)の最後もシグネチャーポーズなので、同じ立ち位置・向きのまま始める / 区間末尾（カウント8）は必ずシグネチャーポーズに戻し、次区間(dance_07)の開始フレームと一致させる / 区間切り替え点は小節頭。0.2 秒の短いクロスフェードで接続 / 立ち位置は画面中央から動かさない（横移動は半歩〜1 歩まで）",
+      "reference_image": "input/dancer_reference.png",
+      "output_file": "clips/dance_06.mp4"
+    },
+    {
+      "index": 7,
+      "id": "dance_07",
+      "start": 35.689,
+      "end": 41.355,
+      "duration": 5.666,
+      "cut_type_start": "downbeat",
+      "cut_type_end": "downbeat",
+      "section": "chorus",
+      "section_ja": "サビ",
+      "chorus_part": "B",
+      "sections_covered": [
+        {
+          "label": "chorus",
+          "start": 35.689,
+          "end": 38.522
+        },
+        {
+          "label": "break",
+          "start": 38.522,
+          "end": 41.355
+        }
+      ],
+      "beats": [
+        {
+          "time": 35.689,
+          "rel": 0.0,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 36.386,
+          "rel": 0.697,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 37.105,
+          "rel": 1.416,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 37.802,
+          "rel": 2.113,
+          "beat_in_bar": 4
+        },
+        {
+          "time": 38.522,
+          "rel": 2.833,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 39.288,
+          "rel": 3.599,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 39.985,
+          "rel": 4.296,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 40.658,
+          "rel": 4.969,
+          "beat_in_bar": 4
+        }
+      ],
+      "n_beats": 8,
+      "accents": [
+        0.697,
+        2.113,
+        2.833,
+        4.969
+      ],
+      "energy": 0.2957,
+      "is_first": false,
+      "is_last": false,
+      "template": "chorus_to_break",
+      "move_name": "Hook Cut → Freeze（フック短縮→ブレイクで静止）",
+      "energy_ja": "高→静。音が抜ける瞬間に止める",
+      "is_hook": false,
+      "phases": [
+        {
+          "counts": "1-2",
+          "t_start": 0.0,
+          "t_end": 1.42,
+          "abs_start": 35.69,
+          "abs_end": 37.1,
+          "ja": "1: シグネチャーポーズ → 2: “つかむ” でフックの頭だけを見せる",
+          "en": "hits the signature reach, then grabs and pulls the fist to his chest",
+          "en_short": "reaches to the camera, then grabs to his chest"
+        },
+        {
+          "counts": "3-4",
+          "t_start": 1.42,
+          "t_end": 2.83,
+          "abs_start": 37.1,
+          "abs_end": 38.52,
+          "ja": "3-4: 右肩・左肩のショルダーヒット（フック後半の要素）",
+          "en": "does two sharp shoulder hits, right then left",
+          "en_short": "hits right then left shoulder"
+        },
+        {
+          "counts": "5-6",
+          "t_start": 2.83,
+          "t_end": 4.3,
+          "abs_start": 38.52,
+          "abs_end": 39.98,
+          "ja": "5-6: 音が抜けるブレイク。ピタッと静止→首だけをスローモーションで横へ回す",
+          "en": "the music drops out: he freezes completely, then turns only his head slowly to the side in slow motion",
+          "en_short": "freezes completely, then slowly turns only his head"
+        },
+        {
+          "counts": "7-8",
+          "t_start": 4.3,
+          "t_end": 5.67,
+          "abs_start": 39.98,
+          "abs_end": 41.35,
+          "ja": "7: 右手をゆっくり目の高さに上げる → 8: ドロップに備え、低めのシグネチャーポーズで溜める",
+          "en": "slowly raises his right hand to eye level, then settles into a low signature pose, ready for the drop",
+          "en_short": "raises his hand to eye level, then settles into a low signature pose"
+        }
+      ],
+      "hint_ja": "ブレイクは“止める”ことが最大の見せ場。動かしすぎない。",
+      "prompt": "Full-body dance video of the same young man from the reference image, same face, same tousled black hair with soft bangs, same all-black outfit: oversized black button-up shirt-jacket over a black T-shirt, black belt, black cargo pants with hanging straps, chunky black sneakers, in the same bare concrete dance studio, two vertical warm LED light tubes on the left and right walls, glossy reflective grey floor, same moody low-key lighting. His signature pose is the pose in the reference image: right arm reaching toward the camera, left hand at his jaw, wide low stance. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.4s: he hits the signature reach, then grabs and pulls the fist to his chest. 1.4s-2.8s: he does two sharp shoulder hits, right then left. 2.8s-4.3s: he the music drops out: he freezes completely, then turns only his head slowly to the side in slow motion. 4.3s-5.7s: he slowly raises his right hand to eye level, then settles into a low signature pose, ready for the drop. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "prompt_short": "The man from the reference image dances in the concrete studio with LED tubes. Signature pose = his pose in the reference image. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-1.4s: he reaches to the camera, then grabs to his chest. 1.4s-2.8s: he hits right then left shoulder. 2.8s-4.3s: he freezes completely, then slowly turns only his head. 4.3s-5.7s: he raises his hand to eye level, then settles into a low signature pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "negative_prompt": "extra people, crowd, second dancer, camera cut, scene change, zoom, camera shake, cropped feet, cropped head, out of frame, distorted hands, extra fingers, extra limbs, missing limbs, twisted joints, deformed face, face change, outfit change, color change, hair change, background change, blurry, low quality, text, watermark, logo",
+      "continuity_ja": "開始フレーム＝基準画像（シグネチャーポーズ） / 前区間(dance_06)の最後もシグネチャーポーズなので、同じ立ち位置・向きのまま始める / 区間末尾は低めのシグネチャーポーズで“溜め”、次区間の頭（ドロップ）で一気に動く / 区間切り替え点は小節頭。0.2 秒の短いクロスフェードで接続 / 立ち位置は画面中央から動かさない（横移動は半歩〜1 歩まで）",
+      "reference_image": "input/dancer_reference.png",
+      "output_file": "clips/dance_07.mp4"
+    },
+    {
+      "index": 8,
+      "id": "dance_08",
+      "start": 41.355,
+      "end": 47.044,
+      "duration": 5.689,
+      "cut_type_start": "downbeat",
+      "cut_type_end": "downbeat",
+      "section": "final_chorus",
+      "section_ja": "ラストサビ/ドロップ(低音主体)",
+      "chorus_part": null,
+      "sections_covered": [
+        {
+          "label": "final_chorus",
+          "start": 41.355,
+          "end": 47.044
+        }
+      ],
+      "beats": [
+        {
+          "time": 41.355,
+          "rel": 0.0,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 42.075,
+          "rel": 0.72,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 42.794,
+          "rel": 1.439,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 43.491,
+          "rel": 2.136,
+          "beat_in_bar": 4
+        },
+        {
+          "time": 44.211,
+          "rel": 2.856,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 44.907,
+          "rel": 3.552,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 45.627,
+          "rel": 4.272,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 46.324,
+          "rel": 4.969,
+          "beat_in_bar": 4
+        }
+      ],
+      "n_beats": 8,
+      "accents": [
+        0.0,
+        0.72,
+        1.439,
+        2.136,
+        2.856,
+        3.552,
+        4.272,
+        4.969
+      ],
+      "energy": 0.3393,
+      "is_first": false,
+      "is_last": false,
+      "template": "final_chorus",
+      "move_name": "Heavy Drop（ヘビー・ドロップ）",
+      "energy_ja": "高（重低音）。重く大きく",
+      "is_hook": false,
+      "phases": [
+        {
+          "counts": "1",
+          "t_start": 0.0,
+          "t_end": 0.72,
+          "abs_start": 41.35,
+          "abs_end": 42.07,
+          "ja": "1: ドロップと同時に右足で踏み込み（スタンプ）、両腕を一気に下へ振り下ろして胸を落とす",
+          "en": "on the drop he stomps his right foot and swings both arms down hard, dropping his chest",
+          "en_short": "stomps and swings both arms down hard on the drop"
+        },
+        {
+          "counts": "2-4",
+          "t_start": 0.72,
+          "t_end": 2.86,
+          "abs_start": 42.07,
+          "abs_end": 44.21,
+          "ja": "2-4: 低い重心のハーフタイム・ボディロール×2、肩を大きく使う",
+          "en": "does two heavy half-time body rolls in a low stance, using his shoulders big",
+          "en_short": "does two heavy body rolls in a low stance"
+        },
+        {
+          "counts": "5-6",
+          "t_start": 2.86,
+          "t_end": 4.27,
+          "abs_start": 44.21,
+          "abs_end": 45.63,
+          "ja": "5-6: フックの“差し出す→つかむ”をもう一度",
+          "en": "repeats the hook: reaches to the camera, then grabs and pulls the fist to his chest",
+          "en_short": "reaches to the camera, then grabs to his chest"
+        },
+        {
+          "counts": "7-8",
+          "t_start": 4.27,
+          "t_end": 5.69,
+          "abs_start": 45.63,
+          "abs_end": 47.04,
+          "ja": "7: 体を右へ 1/4 ターン → 8: 正面に戻ってシグネチャーポーズ",
+          "en": "does a quarter turn to his right, then turns back and hits his signature pose",
+          "en_short": "quarter-turns right, then back into the signature pose"
+        }
+      ],
+      "hint_ja": "重低音に合わせて“重さ”を表現。上半身を落とすと格好良く見える。",
+      "prompt": "Full-body dance video of the same young man from the reference image, same face, same tousled black hair with soft bangs, same all-black outfit: oversized black button-up shirt-jacket over a black T-shirt, black belt, black cargo pants with hanging straps, chunky black sneakers, in the same bare concrete dance studio, two vertical warm LED light tubes on the left and right walls, glossy reflective grey floor, same moody low-key lighting. His signature pose is the pose in the reference image: right arm reaching toward the camera, left hand at his jaw, wide low stance. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-0.7s: he on the drop he stomps his right foot and swings both arms down hard, dropping his chest. 0.7s-2.9s: he does two heavy half-time body rolls in a low stance, using his shoulders big. 2.9s-4.3s: he repeats the hook: reaches to the camera, then grabs and pulls the fist to his chest. 4.3s-5.7s: he does a quarter turn to his right, then turns back and hits his signature pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "prompt_short": "The man from the reference image dances in the concrete studio with LED tubes. Signature pose = his pose in the reference image. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-0.7s: he stomps and swings both arms down hard on the drop. 0.7s-2.9s: he does two heavy body rolls in a low stance. 2.9s-4.3s: he reaches to the camera, then grabs to his chest. 4.3s-5.7s: he quarter-turns right, then back into the signature pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "negative_prompt": "extra people, crowd, second dancer, camera cut, scene change, zoom, camera shake, cropped feet, cropped head, out of frame, distorted hands, extra fingers, extra limbs, missing limbs, twisted joints, deformed face, face change, outfit change, color change, hair change, background change, blurry, low quality, text, watermark, logo",
+      "continuity_ja": "開始フレーム＝基準画像（シグネチャーポーズ） / 前区間(dance_07)の最後もシグネチャーポーズなので、同じ立ち位置・向きのまま始める / 区間末尾（カウント8）は必ずシグネチャーポーズに戻し、次区間(dance_09)の開始フレームと一致させる / 区間切り替え点は小節頭。0.2 秒の短いクロスフェードで接続 / 立ち位置は画面中央から動かさない（横移動は半歩〜1 歩まで）",
+      "reference_image": "input/dancer_reference.png",
+      "output_file": "clips/dance_08.mp4"
+    },
+    {
+      "index": 9,
+      "id": "dance_09",
+      "start": 47.044,
+      "end": 51.72,
+      "duration": 4.676,
+      "cut_type_start": "downbeat",
+      "cut_type_end": "end",
+      "section": "final_chorus",
+      "section_ja": "ラストサビ/ドロップ(低音主体)",
+      "chorus_part": null,
+      "sections_covered": [
+        {
+          "label": "final_chorus",
+          "start": 47.044,
+          "end": 51.72
+        }
+      ],
+      "beats": [
+        {
+          "time": 47.044,
+          "rel": 0.0,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 47.74,
+          "rel": 0.696,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 48.46,
+          "rel": 1.416,
+          "beat_in_bar": 3
+        },
+        {
+          "time": 49.157,
+          "rel": 2.113,
+          "beat_in_bar": 4
+        },
+        {
+          "time": 49.784,
+          "rel": 2.74,
+          "beat_in_bar": 1
+        },
+        {
+          "time": 50.434,
+          "rel": 3.39,
+          "beat_in_bar": 2
+        },
+        {
+          "time": 51.061,
+          "rel": 4.017,
+          "beat_in_bar": 3
+        }
+      ],
+      "n_beats": 7,
+      "accents": [
+        0.0,
+        0.696,
+        1.416,
+        2.113
+      ],
+      "energy": 0.3393,
+      "is_first": false,
+      "is_last": true,
+      "template": "ending",
+      "move_name": "Final Pose（決めポーズ）",
+      "energy_ja": "高→静。最後の小節頭で明確な決めポーズを打ち、音が消えるまでホールド",
+      "is_hook": false,
+      "phases": [
+        {
+          "counts": "1",
+          "t_start": 0.0,
+          "t_end": 0.7,
+          "abs_start": 47.04,
+          "abs_end": 47.74,
+          "ja": "1: シグネチャーポーズ（最後の“差し出す”）",
+          "en": "reaches to the camera in his signature pose one last time",
+          "en_short": "reaches to the camera in the signature pose"
+        },
+        {
+          "counts": "2",
+          "t_start": 0.7,
+          "t_end": 1.42,
+          "abs_start": 47.74,
+          "abs_end": 48.46,
+          "ja": "2: 差し出した手をつかんで胸へ引き寄せる",
+          "en": "grabs and pulls the fist to his chest",
+          "en_short": "grabs and pulls the fist to his chest"
+        },
+        {
+          "counts": "3",
+          "t_start": 1.42,
+          "t_end": 2.11,
+          "abs_start": 48.46,
+          "abs_end": 49.16,
+          "ja": "3: 胸→腰のボディロールで沈み、体を正面へ",
+          "en": "does a slow body roll sinking down, squaring his body to the camera",
+          "en_short": "does a slow body roll, squaring to the camera"
+        },
+        {
+          "counts": "4",
+          "t_start": 2.11,
+          "t_end": 2.74,
+          "abs_start": 49.16,
+          "abs_end": 49.78,
+          "ja": "4: 立ち上がりながら右手 2 本指を眉の横から前へ（サリュート）",
+          "en": "rises with a two-finger salute from his brow toward the camera",
+          "en_short": "rises with a two-finger salute"
+        },
+        {
+          "counts": "5-7",
+          "t_start": 2.74,
+          "t_end": 4.68,
+          "abs_start": 49.78,
+          "abs_end": 51.72,
+          "ja": "5〜最後: 最後の小節頭でキメ。脚を大きく開き、左手はベルト、右手の人差し指をまっすぐカメラへ、あごを引いて目線はカメラ。音が消えても完全静止でホールド",
+          "en": "hits the final pose on the last downbeat: wide stance, left hand on his belt, right index finger pointing straight at the camera, chin down, eyes locked on the camera, then holds completely still until the end",
+          "en_short": "hits the final pose: wide stance, left hand on belt, right finger pointing at the camera, then holds completely still"
+        }
+      ],
+      "hint_ja": "最後は完全静止。動画の最後のフレームがそのままサムネイル候補になる。",
+      "prompt": "Full-body dance video of the same young man from the reference image, same face, same tousled black hair with soft bangs, same all-black outfit: oversized black button-up shirt-jacket over a black T-shirt, black belt, black cargo pants with hanging straps, chunky black sneakers, in the same bare concrete dance studio, two vertical warm LED light tubes on the left and right walls, glossy reflective grey floor, same moody low-key lighting. His signature pose is the pose in the reference image: right arm reaching toward the camera, left hand at his jaw, wide low stance. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-0.7s: he reaches to the camera in his signature pose one last time. 0.7s-1.4s: he grabs and pulls the fist to his chest. 1.4s-2.1s: he does a slow body roll sinking down, squaring his body to the camera. 2.1s-2.7s: he rises with a two-finger salute from his brow toward the camera. 2.7s-4.7s: he hits the final pose on the last downbeat: wide stance, left hand on his belt, right index finger pointing straight at the camera, chin down, eyes locked on the camera, then holds completely still until the end. End on a clear frozen final pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "prompt_short": "The man from the reference image dances in the concrete studio with LED tubes. Signature pose = his pose in the reference image. Slow 83 BPM groove, moves land on the beat with crisp hits and smooth flow. 0.0s-0.7s: he reaches to the camera in the signature pose. 0.7s-1.4s: he grabs and pulls the fist to his chest. 1.4s-2.1s: he does a slow body roll, squaring to the camera. 2.1s-2.7s: he rises with a two-finger salute. 2.7s-4.7s: he hits the final pose: wide stance, left hand on belt, right finger pointing at the camera, then holds completely still. End on a clear frozen final pose. Same person, same black outfit, same hairstyle, same studio background, same lighting, same camera position. Static camera, no zoom, no sudden camera cuts. Full body always in frame, head to sneakers. 9:16 vertical TikTok dance video. K-POP style choreography, cool and confident mood, realistic human movement, natural body mechanics. No extra people, no distorted hands or limbs.",
+      "negative_prompt": "extra people, crowd, second dancer, camera cut, scene change, zoom, camera shake, cropped feet, cropped head, out of frame, distorted hands, extra fingers, extra limbs, missing limbs, twisted joints, deformed face, face change, outfit change, color change, hair change, background change, blurry, low quality, text, watermark, logo",
+      "continuity_ja": "開始フレーム＝基準画像（シグネチャーポーズ） / 前区間(dance_08)の最後もシグネチャーポーズなので、同じ立ち位置・向きのまま始める / 最後の小節頭で決めポーズ→音が消えても完全静止で動画終端までホールド / 立ち位置は画面中央から動かさない（横移動は半歩〜1 歩まで）",
+      "reference_image": "input/dancer_reference.png",
+      "output_file": "clips/dance_09.mp4"
+    }
+  ]
+}

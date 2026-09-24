@@ -1,0 +1,26 @@
+{
+  "input_dir": ".",
+  "output_dir": "output",
+  "segment": {"min_len": 5.0, "max_len": 8.0, "target_len": 6.0, "last_min_len": 4.5},
+  "assemble": {"crossfade_sec": 0.2, "max_stretch": 1.2},
+  "prompt": {
+    "character": null,
+    "scene": null
+  },
+  "generation": {
+    "provider": "kling",
+    "execute": false,
+    "chain_last_frame": false,
+    "end_frame_is_reference": true,
+    "poll_interval_sec": 10,
+    "timeout_sec": 1200,
+    "max_retries": 2,
+    "providers": {
+      "kling":   {"model": "kling-v2-1", "mode": "pro", "durations": [5, 10], "cfg_scale": 0.5},
+      "runway":  {"model": "gen4_turbo", "durations": [5, 10], "ratio": "720:1280"},
+      "minimax": {"model": "MiniMax-Hailuo-02", "durations": [6, 10], "resolution": "768P"},
+      "luma":    {"model": "ray-2", "durations": [5, 9], "resolution": "720p", "image_url": null},
+      "fal":     {"model": "fal-ai/kling-video/v2.1/pro/image-to-video", "durations": [5, 10]}
+    }
+  }
+}

@@ -1,0 +1,7 @@
+numpy
+scipy
+librosa>=0.10
+soundfile
+imageio-ffmpeg   # ffmpeg バイナリ同梱（システムに ffmpeg があればそちらを優先）
+pillow
+requests
