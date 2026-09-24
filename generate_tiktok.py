@@ -39,6 +39,8 @@ from lyrics_video.subtitles import layout_params, write_subs  # noqa: E402
 def build_subtitles(inp, a, cfg: dict, out_dir: Path, work: Path, method: str | None, font_name: str,
                     stamp: str, hist: Path) -> tuple[Path | None, str]:
     if inp.lyrics is None:
+        inp.lyrics = ly.extract_embedded_lyrics(inp.audio, work)
+    if inp.lyrics is None:
         log.warning("[歌詞] 歌詞ファイルが無いため、字幕なしで作成します")
         return None, "none"
     lines = ly.parse_lyrics(inp.lyrics)
@@ -132,7 +134,7 @@ def main() -> int:
     ap.add_argument("--input", help="素材フォルダ（既定: config の input_dir = input）")
     ap.add_argument("--output", help="出力フォルダ（既定: output）")
     ap.add_argument("--audio"), ap.add_argument("--lyrics"), ap.add_argument("--background")
-    ap.add_argument("--method", choices=["auto", "lrc", "align", "whisper", "heuristic"])
+    ap.add_argument("--method", choices=["auto", "lrc", "align", "sherpa", "whisper", "heuristic"])
     ap.add_argument("--variants", type=int, help="背景の動き違いを何本作るか")
     ap.add_argument("--preview", action="store_true", help="半分の解像度で素早く確認用に書き出す")
     ap.add_argument("--ass", help="この ASS 字幕をそのまま使う（手で直した字幕で再描画）")

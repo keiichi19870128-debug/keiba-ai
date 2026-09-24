@@ -9,6 +9,8 @@ pillow
 pykakasi            # 歌詞とボーカルの突き合わせで漢字→ひらがな変換に使用（精度向上）
 
 # ---- 歌詞タイミングを自動で合わせる（強く推奨・無料・ローカル実行）----
+sherpa-onnx         # 日本語の歌声認識 (ReazonSpeech) + ボーカル分離 (Spleeter)。PyTorch 不要で軽い。
+                    # モデル（約 800MB）は初回に GitHub から models/ へ自動ダウンロード
 faster-whisper      # Whisper 文字起こし（初回にモデルを自動ダウンロード。以後オフラインで動作）
 
 # ---- さらに精度を上げたい場合（任意・PyTorch が入るので容量が大きい）----

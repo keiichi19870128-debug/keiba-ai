@@ -19,6 +19,7 @@ import numpy as np
 
 from .audio import AudioInfo, decode
 from .common import log
+from . import sherpa
 from .lyrics import LyricLine, Phrase, norm, units
 
 # 各行の「1 文字ごとの (開始, 終了) 時刻」を持つ
@@ -96,27 +97,43 @@ def _device(cfg_dev: str) -> str:
     return "cpu"
 
 
-def separate_vocals(audio: Path, work: Path, mode) -> Path | None:
-    """demucs が入っていればボーカルだけを抜き出す（文字起こし精度が大きく上がる）."""
+def separate_vocals(audio: Path, work: Path, cfg: dict) -> Path | None:
+    """伴奏を消してボーカルだけにする（認識精度が大きく上がる）. demucs > sherpa-onnx (Spleeter) の順."""
+    mode = cfg["timing"]["vocal_separation"]
     if mode is False or mode == "off":
         return None
     try:
         import demucs  # noqa: F401
+        has_demucs = True
     except ImportError:
-        if mode is True:
-            log.warning("[タイミング] vocal_separation=true ですが demucs が入っていません (pip install demucs)")
-        return None
-    src = decode(audio, work / "demucs_in.wav", 44100, mono=False)
-    out = work / "demucs"
-    log.info("[タイミング] demucs でボーカルを分離中（初回はモデルをダウンロードします）...")
-    cmd = [sys.executable, "-m", "demucs", "--two-stems", "vocals", "-n", "htdemucs", "-o", str(out), str(src)]
-    proc = subprocess.run(cmd, capture_output=True, encoding="utf-8", errors="replace")
-    log.debug("[demucs] exit=%s\n%s", proc.returncode, proc.stderr[-4000:])
-    voc = out / "htdemucs" / src.stem / "vocals.wav"
-    if proc.returncode != 0 or not voc.exists():
-        log.warning("[タイミング] ボーカル分離に失敗したため元音源で続行します（詳細はログ）")
-        return None
-    return voc
+        has_demucs = False
+    if has_demucs:
+        src = decode(audio, work / "demucs_in.wav", 44100, mono=False)
+        out = work / "demucs"
+        log.info("[タイミング] demucs でボーカルを分離中（初回はモデルをダウンロードします）...")
+        cmd = [sys.executable, "-m", "demucs", "--two-stems", "vocals", "-n", "htdemucs", "-o", str(out), str(src)]
+        proc = subprocess.run(cmd, capture_output=True, encoding="utf-8", errors="replace")
+        log.debug("[demucs] exit=%s\n%s", proc.returncode, proc.stderr[-4000:])
+        voc = out / "htdemucs" / src.stem / "vocals.wav"
+        if proc.returncode == 0 and voc.exists():
+            return voc
+        log.warning("[タイミング] demucs のボーカル分離に失敗しました（詳細はログ）")
+    if sherpa.available():
+        try:
+            log.info("[タイミング] Spleeter (sherpa-onnx) でボーカルを分離中 ...")
+            src = decode(audio, work / "sep_in.wav", 44100, mono=False)
+            return sherpa.separate_vocals(src, work / "vocals.wav", models_dir(cfg))
+        except Exception as exc:
+            log.warning("[タイミング] ボーカル分離に失敗したため元音源で続行します: %s", exc)
+            log.debug("traceback", exc_info=True)
+    elif mode is True:
+        log.warning("[タイミング] vocal_separation=true ですが demucs / sherpa-onnx が入っていません")
+    return None
+
+
+def models_dir(cfg: dict) -> Path:
+    p = Path(cfg["timing"].get("models_dir") or "models")
+    return p if p.is_absolute() else sherpa.ROOT / p
 
 
 def whisper_words(engine: str, wav16: Path, lyrics_text: str, cfg: dict) -> list[tuple[float, float, str]]:
@@ -367,8 +384,10 @@ def estimate(lines: list[LyricLine], a: AudioInfo, audio: Path, work: Path, cfg:
         log.info("[タイミング] 歌詞ファイルの LRC 時刻を使用します")
         return lrc_timing(lines, a), "lrc"
 
-    order = {"auto": ["align", "whisper", "heuristic"], "align": ["align", "whisper", "heuristic"],
-             "whisper": ["whisper", "heuristic"], "heuristic": ["heuristic"], "lrc": ["align", "whisper", "heuristic"]}
+    ja = (cfg["timing"]["language"] or "ja").lower().startswith("ja")
+    full = ["align", "sherpa", "whisper", "heuristic"] if ja else ["align", "whisper", "heuristic"]
+    order = {"auto": full, "lrc": full, "align": full, "sherpa": ["sherpa", "whisper", "heuristic"],
+             "whisper": ["whisper", "heuristic"], "heuristic": ["heuristic"]}
     lyrics_text = "\n".join(ln.text for ln in lines)
     cache_dir = work / "cache"
     cache_dir.mkdir(parents=True, exist_ok=True)
@@ -377,12 +396,15 @@ def estimate(lines: list[LyricLine], a: AudioInfo, audio: Path, work: Path, cfg:
         if m == "heuristic":
             log.info("[タイミング] 音声解析（歌声らしさ・無音・ビート）から推定します")
             return heuristic_timing(lines, a), "heuristic"
-        mod = "stable_whisper" if m == "align" else None
-        if mod:
+        if m == "align":
             try:
-                __import__(mod)
+                __import__("stable_whisper")
             except ImportError:
                 log.info("[タイミング] stable-ts 未インストールのため強制アラインメントはスキップ")
+                continue
+        elif m == "sherpa":
+            if not sherpa.available():
+                log.info("[タイミング] sherpa-onnx 未インストールのため ReazonSpeech はスキップ")
                 continue
         else:
             try:
@@ -403,12 +425,16 @@ def estimate(lines: list[LyricLine], a: AudioInfo, audio: Path, work: Path, cfg:
                 log.info("[タイミング] %s: 前回の解析結果（キャッシュ）を使用", m)
             else:
                 if wav16 is None:
-                    voc = separate_vocals(audio, work, cfg["timing"]["vocal_separation"])
+                    voc = separate_vocals(audio, work, cfg)
                     wav16 = decode(voc or audio, work / "whisper_16k.wav", 16000)
-                log.info("[タイミング] %s (%s モデル) で解析中 ... 初回はモデルのダウンロードがあります",
-                         "stable-ts 強制アラインメント" if m == "align" else "Whisper 文字起こし",
-                         cfg["timing"]["whisper_model"])
-                words = whisper_words(m, wav16, lyrics_text, cfg)
+                if m == "sherpa":
+                    log.info("[タイミング] ReazonSpeech (sherpa-onnx) で歌声を認識中 ...")
+                    words = sherpa.recognize_words(wav16, models_dir(cfg))
+                else:
+                    log.info("[タイミング] %s (%s モデル) で解析中 ... 初回はモデルのダウンロードがあります",
+                             "stable-ts 強制アラインメント" if m == "align" else "Whisper 文字起こし",
+                             cfg["timing"]["whisper_model"])
+                    words = whisper_words(m, wav16, lyrics_text, cfg)
                 cache.write_text(json.dumps(words, ensure_ascii=False), encoding="utf-8")
             log.debug("[タイミング] 単語 %d 個: %s", len(words), " ".join(w[2] for w in words)[:2000])
             ct, ratio = align_words_to_lines(lines, words, a.duration)

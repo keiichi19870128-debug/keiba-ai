@@ -14,18 +14,30 @@ Style: Chorus,Noto Sans JP Black,106,&H00FFFFFF,&H00FFFFFF,&H00000000,&H8C000000
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 1,0:00:04.26,0:00:07.21,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}夜明け前の 交差点
-Dialogue: 1,0:00:07.27,0:00:12.08,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1122,540,1092,0,320)}信号待ちの
-Dialogue: 2,0:00:07.27,0:00:12.08,Lyric,,0,0,0,,{\an5\blur1.5\fade(255,0,255,90,270,4654,4814)\move(540,1241,540,1212,90,410)}君を見てた
-Dialogue: 1,0:00:12.24,0:00:16.64,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1122,540,1092,0,320)}言えないままの
-Dialogue: 2,0:00:12.24,0:00:16.64,Lyric,,0,0,0,,{\an5\blur1.5\fade(255,0,255,90,270,4238,4398)\move(540,1241,540,1212,90,410)}言葉が
-Dialogue: 1,0:00:16.70,0:00:22.70,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1107,540,1078,0,320)}胸の奥で
-Dialogue: 2,0:00:16.70,0:00:22.70,Lyric,,0,0,0,,{\an5\blur1.5\fade(255,0,255,90,270,5840,6000)\move(540,1241,540,1212,90,410)}{\fs97\1c&H005CE4FF\t(270,430,\fs118)}鳴り止まない{\fs92\1c&H00FFFFFF}
-Dialogue: 1,0:00:23.61,0:00:27.99,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1067)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}走り出せ
-Dialogue: 2,0:00:23.61,0:00:27.99,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1221)\fade(255,0,255,90,270,4215,4375)\fscx72\fscy72\t(90,270,\fscx107\fscy107)\t(270,380,\fscx100\fscy100)\fs106}{\fs111\1c&H005CE4FF\t(270,430,\fs135)}今夜{\fs106\1c&H00FFFFFF} だけは
-Dialogue: 1,0:00:28.05,0:00:32.05,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1083)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}誰にも
-Dialogue: 2,0:00:28.05,0:00:32.05,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1221)\fade(255,0,255,90,270,3843,4003)\fscx72\fscy72\t(90,270,\fscx107\fscy107)\t(270,380,\fscx100\fscy100)\fs106}止められない
-Dialogue: 1,0:00:32.11,0:00:36.87,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1083)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}君となら
-Dialogue: 2,0:00:32.11,0:00:36.87,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1221)\fade(255,0,255,90,270,4598,4758)\fscx72\fscy72\t(90,270,\fscx107\fscy107)\t(270,380,\fscx100\fscy100)\fs106}どこまでも
-Dialogue: 1,0:00:36.93,0:00:40.48,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}光の先へ {\fs111\1c&H005CE4FF\t(180,340,\fs135)}Go{\fs106\1c&H00FFFFFF}
-Dialogue: 1,0:00:42.79,0:00:48.79,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}まだ 夢の途中
+Dialogue: 1,0:00:00.51,0:00:02.76,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1083)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}まあいいや
+Dialogue: 2,0:00:00.51,0:00:02.76,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1221)\fade(255,0,255,90,270,2090,2250)\fscx72\fscy72\t(90,270,\fscx107\fscy107)\t(270,380,\fscx100\fscy100)\fs106}まあいいや
+Dialogue: 1,0:00:02.82,0:00:05.97,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1083)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}{\fs111\1c&H005CE4FF\t(180,340,\fs135)}明日の俺{\fs106\1c&H00FFFFFF}に
+Dialogue: 2,0:00:02.82,0:00:05.97,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1237)\fade(255,0,255,90,270,2984,3144)\fscx72\fscy72\t(90,270,\fscx107\fscy107)\t(270,380,\fscx100\fscy100)\fs106}任せりゃいいや
+Dialogue: 1,0:00:06.03,0:00:07.39,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}どうでもいい
+Dialogue: 1,0:00:07.45,0:00:08.62,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}どうでもいい
+Dialogue: 1,0:00:08.68,0:00:10.09,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}って言うほど
+Dialogue: 1,0:00:10.82,0:00:12.53,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs95}{\fs100\1c&H005CE4FF\t(180,340,\fs122)}気にしてる{\fs95\1c&H00FFFFFF}みたい
+Dialogue: 1,0:00:12.59,0:00:14.49,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1178,540,1152,0,320)\fs82}{\fs86\1c&H005CE4FF\t(180,340,\fs105)}午前2時{\fs82\1c&H00FFFFFF} まだ寝れない
+Dialogue: 1,0:00:14.55,0:00:16.28,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}消したはずなのに
+Dialogue: 1,0:00:16.34,0:00:17.71,Lyric,,0,0,0,,{\an5\blur1.5\fad(180,160)\move(540,1181,540,1152,0,320)}{\fs97\1c&H005CE4FF\t(180,340,\fs118)}また見てる{\fs92\1c&H00FFFFFF}
+Dialogue: 1,0:00:17.77,0:00:20.35,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1083)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}まあいいや
+Dialogue: 2,0:00:17.77,0:00:20.35,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1221)\fade(255,0,255,90,270,2415,2575)\fscx72\fscy72\t(90,270,\fscx107\fscy107)\t(270,380,\fscx100\fscy100)\fs106}まあいいや
+Dialogue: 1,0:00:20.41,0:00:21.07,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}今日くらい
+Dialogue: 1,0:00:21.13,0:00:23.21,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs95}{\fs100\1c&H005CE4FF\t(180,340,\fs122)}全部忘れて{\fs95\1c&H00FFFFFF}いいや
+Dialogue: 1,0:00:23.27,0:00:25.52,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1083)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}まあいいや
+Dialogue: 2,0:00:23.27,0:00:25.52,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1221)\fade(255,0,255,90,270,2090,2250)\fscx72\fscy72\t(90,270,\fscx107\fscy107)\t(270,380,\fscx100\fscy100)\fs106}まあいいや
+Dialogue: 1,0:00:25.58,0:00:28.70,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1083)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}{\fs111\1c&H005CE4FF\t(180,340,\fs135)}明日の俺{\fs106\1c&H00FFFFFF}に
+Dialogue: 2,0:00:25.58,0:00:28.70,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1237)\fade(255,0,255,90,270,2961,3121)\fscx72\fscy72\t(90,270,\fscx107\fscy107)\t(270,380,\fscx100\fscy100)\fs106}任せりゃいいや
+Dialogue: 1,0:00:28.76,0:00:30.31,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}どうでもいい
+Dialogue: 1,0:00:30.37,0:00:31.70,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}どうでもいい
+Dialogue: 1,0:00:31.76,0:00:34.56,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1067)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}たぶん今日も
+Dialogue: 2,0:00:31.76,0:00:34.56,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1221)\fade(255,0,255,90,270,2636,2796)\fscx72\fscy72\t(90,270,\fscx107\fscy107)\t(270,380,\fscx100\fscy100)\fs106}{\fs111\1c&H005CE4FF\t(270,430,\fs135)}嘘ついてる{\fs106\1c&H00FFFFFF}
+Dialogue: 1,0:00:34.62,0:00:37.39,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1083)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}まあいいや
+Dialogue: 2,0:00:34.62,0:00:37.39,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1221)\fade(255,0,255,90,270,2613,2773)\fscx72\fscy72\t(90,270,\fscx107\fscy107)\t(270,380,\fscx100\fscy100)\fs106}まあいいや
+Dialogue: 1,0:00:37.45,0:00:38.11,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs106}今日くらい
+Dialogue: 1,0:00:38.17,0:00:43.16,Chorus,,0,0,0,,{\an5\blur1.5\pos(540,1152)\fad(180,160)\fscx72\fscy72\t(0,180,\fscx107\fscy107)\t(180,290,\fscx100\fscy100)\fs95}{\fs100\1c&H005CE4FF\t(180,340,\fs122)}全部忘れて{\fs95\1c&H00FFFFFF}いいや

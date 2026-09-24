@@ -58,6 +58,9 @@ python generate_tiktok.py
     を含む名前が優先されます。背景は動画 > 画像の順で、`bg1.jpg` `bg2.jpg` … のように**背景らしい名前の画像が
     複数あると、小節頭でクロスフェードしながら切り替わるスライドショー**になります。
   - 背景が無い場合はゆっくり動くグラデーション背景、歌詞が無い場合は字幕なしで作ります。
+  - **写真素材が無いとき**は `python tools/make_night_background.py` で「深夜・雨の窓・にじむ街の灯り」の
+    背景動画（16 秒のシームレスループ、全部プログラムで描くので権利フリー）を `input/background.mp4` に作れます。
+    `--seed 3` で配置違い、`--palette blue` / `warm` で色味違い、`--rain 0` で雨なし。
 - 次の曲を作るときは `input/` の 3 ファイルを入れ替えて同じコマンドを実行するだけです。
   前回の `final_tiktok.mp4` や字幕は削除せず `output/_history/<日時>/` に退避されます。
 
@@ -65,7 +68,7 @@ python generate_tiktok.py
 |---|---|
 | `--preview` | 半分の解像度で素早く書き出し（`final_tiktok_preview.mp4`）。見た目の確認用 |
 | `--variants 3` | 背景の動きを変えた動画を 3 本作る（`final_tiktok.mp4`, `final_tiktok_v2.mp4`, `_v3`）|
-| `--method whisper` | タイミング推定方法を指定（`auto` / `lrc` / `align` / `whisper` / `heuristic`）|
+| `--method whisper` | タイミング推定方法を指定（`auto` / `lrc` / `align` / `sherpa` / `whisper` / `heuristic`）|
 | `--ass output/lyrics.ass` | 手で直した ASS 字幕をそのまま使って再描画 |
 | `--audio 曲.wav --lyrics 歌詞.txt --background 背景.mov` | 使うファイルを直接指定 |
 | `--input 別フォルダ --output 出力先` | 素材フォルダ・出力先を変える |
@@ -94,6 +97,8 @@ python generate_tiktok.py
   1 フレーズで強調するのは 1 語まで（`max_per_phrase`）なので「重要な単語だけ」が目立ちます。
 - 長い行は、スペース → 句読点 → 助詞のあと（「〜の」「〜を」の後ろ）など自然な位置で
   短いフレーズ・最大 2 行に自動で分割し、画面幅からはみ出す場合は文字を縮めて収めます。
+- **歌詞ファイルが無い場合、音源に埋め込まれた歌詞（Suno でダウンロードした mp3 には入っています）を自動で使います。**
+  ただしセクションタグや強調の指定が無いので、見た目にこだわる場合は txt を用意してください。
 - `#` で始まる行はコメントとして無視します。文字コードは UTF-8 / Shift_JIS / UTF-16 どれでも読めます。
 
 ## 4. 歌詞タイミングの決め方（自動）
@@ -104,10 +109,12 @@ python generate_tiktok.py
 |---|---|---|---|
 | 0 | 歌詞ファイルが LRC 形式（`[00:12.30]歌詞`）ならその時刻を使う | なし | 指定どおり |
 | 1 | **stable-ts で歌詞テキストとボーカルを強制アラインメント** | `pip install stable-ts` | ◎ |
+| 1.5 | **sherpa-onnx: ボーカル分離 (Spleeter) → 日本語音声認識 ReazonSpeech で 1 文字ごとの時刻を取得 → 歌詞と突き合わせ**（日本語の曲のみ） | `sherpa-onnx`（requirements に含む） | ◎ |
 | 2 | **Whisper で文字起こし → 歌詞と文字単位で突き合わせ**（漢字/かなの違いは読みに直して比較） | `faster-whisper`（requirements に含む） | ○ |
 | 3 | 歌声らしさ（中央定位の人声帯域）・無音・曲構成の切れ目・ビートから推定 | なし | △（目安） |
 
-- 1・2 は `demucs` が入っていればボーカルを分離してから解析します。結果は `output/_work/cache/` に保存され、
+- 1〜2 は伴奏を消してボーカルだけにしてから解析します（`demucs` があれば demucs、無ければ sherpa-onnx の Spleeter）。
+  sherpa-onnx のモデルは初回に GitHub (k2-fsa/sherpa-onnx Releases) から `models/` へ自動ダウンロードされます。結果は `output/_work/cache/` に保存され、
   同じ曲なら 2 回目以降は解析をスキップします（デザインだけ変えて何度も作り直すのが速い）。
 - 一致率が低い（`timing.min_match_ratio` 未満）場合やモデルのダウンロードに失敗した場合は、自動で次の方法に切り替え、
   理由をログに残します。
@@ -174,6 +181,7 @@ python generate_tiktok.py
 | `timing.language` / `device` | `"ja"` / `"auto"` | 歌の言語 / `cpu` / `cuda` |
 | `timing.vocal_separation` | `"auto"` | demucs があれば使う / `true` / `false` |
 | `timing.offset_sec` | `0.0` | 全体のタイミングを一律にずらす（秒）|
+| `timing.models_dir` | `"models"` | sherpa-onnx のモデルを置くフォルダ |
 | `variants` | `1` | 1 回で作る本数（`--variants` と同じ）|
 | `files.audio` / `lyrics` / `background` | `null` | ファイルを固定したい場合にパスを書く |
 

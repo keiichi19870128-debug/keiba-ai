@@ -15,6 +15,10 @@ TAG_RE = re.compile(r"^\s*[\[【\(（<＜]\s*([^\]】\)）>＞]{1,40})\s*[\]】\
 LRC_RE = re.compile(r"^\s*\[(\d{1,2}):(\d{1,2}(?:[.:]\d{1,3})?)\]\s*(.*)$")
 LRC_META_RE = re.compile(r"^\s*\[(ar|ti|al|by|offset|length|re|ve):.*\]\s*$", re.I)
 EMPH_RE = re.compile(r"[*＊]{1,2}(.+?)[*＊]{1,2}")
+# このあとで区切ると自然な接続の言葉
+CONJ = ("のに", "けど", "けれど", "から", "ので", "ても", "でも", "たら", "なら", "ながら", "まま", "より")
+# 助詞に見えても 1 語なので区切らない組み合わせ
+NO_BREAK = ("はず", "にも", "では", "には", "とは", "ても", "でも", "がら", "もの", "よう", "ばか", "にな", "とき", "ねむ")
 BREAK_PUNCT = "、，,。．！!？?・…～〜♪"
 
 
@@ -126,6 +130,39 @@ def parse_lyrics(path: Path) -> list[LyricLine]:
     log.info("[歌詞] %d 行 / %d ブロック%s", len(lines), len(remap),
              f" / LRC タイム指定 {n_lrc} 行" if n_lrc else "")
     return lines
+
+
+def extract_embedded_lyrics(audio: Path, work: Path) -> Path | None:
+    """音源ファイルのタグに埋め込まれた歌詞（Suno の mp3 など）を取り出して txt にする."""
+    import subprocess
+
+    from .common import ffmpeg_exe
+
+    meta = work / "embedded_meta.txt"
+    subprocess.run([ffmpeg_exe(), "-hide_banner", "-loglevel", "error", "-y", "-i", str(audio),
+                    "-f", "ffmetadata", str(meta)], capture_output=True)
+    if not meta.exists():
+        return None
+    raw = meta.read_text(encoding="utf-8", errors="replace")
+    entries, cur = [], ""
+    for line in raw.splitlines():  # ffmetadata: 値の中の改行は行末の \ で表される
+        if cur.endswith("\\") and not cur.endswith("\\\\"):
+            cur = cur[:-1] + "\n" + line
+        else:
+            if cur:
+                entries.append(cur)
+            cur = line
+    if cur:
+        entries.append(cur)
+    for e in entries:
+        key, _, val = e.partition("=")
+        if key.strip().lower().startswith(("lyrics", "unsyncedlyrics", "uslt")) and val.strip():
+            val = re.sub(r"\\(.)", r"\1", val)
+            out = work / "embedded_lyrics.txt"
+            out.write_text(val.strip() + "\n", encoding="utf-8")
+            log.info("[歌詞] 歌詞ファイルが無いため、音源に埋め込まれた歌詞を使います（%s）", key)
+            return out
+    return None
 
 
 def norm(s: str) -> str:
@@ -241,8 +278,11 @@ def break_points(s: str) -> list[tuple[int, float]]:
             pts.append((i, 1.2))
         elif a == "kata" and b == "kanji" or a == "kanji" and b == "kata":
             pts.append((i, 0.8))
-        elif a == "hira" and b == "hira" and s[i - 1] in "はがをにでともへやねよてば":
-            pts.append((i, 0.6))
+        elif a == "hira" and b == "hira":
+            if any(s[:i].endswith(w) for w in CONJ):
+                pts.append((i, 2.2))   # 「〜のに」「〜けど」「〜から」のあと
+            elif s[i - 1] in "はがをにでともへやねよてば" and s[i - 1:i + 1] not in NO_BREAK:
+                pts.append((i, 0.4))
     return pts
 
 
@@ -304,7 +344,8 @@ def split_into_phrases(lines: list[LyricLine], row_units: float, phrase_units: f
                 continue
             seg = s[a:b]
             rows = [(a, b)]
-            if units(seg) > r_units and max_lines >= 2:
+            # 少しはみ出すだけなら 2 行に割らず、文字を少し縮めて 1 行で見せる（subtitles 側で自動縮小）
+            if units(seg) > r_units * 1.15 and max_lines >= 2:
                 rows = [(a + x, a + y) for x, y in _split_rec(seg, 0, r_units)][:max_lines]
                 if rows[-1][1] < b:  # 行数を超えた分は最後の行に寄せる（下で文字サイズを縮めて収める）
                     rows[-1] = (rows[-1][0], b)

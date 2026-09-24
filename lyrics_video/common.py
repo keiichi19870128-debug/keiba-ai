@@ -105,6 +105,7 @@ DEFAULTS: dict = {
         "use_lyrics_prompt": True,
         "min_match_ratio": 0.2,
         "offset_sec": 0.0,
+        "models_dir": "models",
     },
     "variants": 1,
 }
